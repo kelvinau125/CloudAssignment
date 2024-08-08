@@ -65,8 +65,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # CloudAssignment
-Prepare - Xampp
-
-- Check cmd **composer -v
+- Download Xampp
+- Download PHP
+- Download Composer
+- Check cmd **composer
+- Check in Vscode **composer
 - https://dev.to/patricklusaya/how-to-setup-laravel-on-windows-with-xampp-quick-guide-16ng
+
+
+**First Run Project
+
 
