@@ -444,21 +444,21 @@
             </div>
             <div class="col-md-6 grid-margin transparent">
               <div class="row">
-                <a href="{{ route('educatordashboard') }}" class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-light-danger">
+                <a href="pages\teacher\teacher_login.php" class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-tale">
                     <div class="card-body">
-                      <p class="mb-4">Are you a teacher?</p>
-                      <p class="fs-30 mb-2">Teacher Login</p>
-                      <p>or sign up</p>
+                      <p class="mb-4">Please Click</p>
+                      <p class="fs-30 mb-2"> <img style="width:10%;" src="images/dashboard/qr-code.png" alt=""> Module </p>
+                      <p style="visibility: hidden;">10.00% (30 days)</p>
                     </div>
                   </div>
                 </a>
                 <a href="student_login.php" class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-dark-blue">
                     <div class="card-body">
-                      <p class="mb-4">Are you a student?</p>
-                      <p class="fs-30 mb-2">Student Login</p>
-                      <p>or sign up</p>
+                      <p class="mb-4">Please Click</p>
+                      <p class="fs-30 mb-2">Feedback</p>
+                      <p style="visibility: hidden;">22.00% (30 days)</p>
                     </div>
                   </div>
                 </a>
@@ -467,17 +467,18 @@
                 <a href="pages/small-game/games.php" class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                   <div class="card card-light-blue">
                     <div class="card-body">
-                      <p class="mb-4">Are you a guest?</p>
-                      <p class="fs-30 mb-2">Play</p>
-                      <p>Small Game</p>
+                      <p class="mb-4">Please Click</p>
+                      <p class="fs-30 mb-2">QR Code</p>
+                      <p style="visibility: hidden;">2.00% (30 days)</p>
                     </div>
                   </div>
                 </a>
                 <div class="col-md-6 stretch-card transparent">
-                  <div class="card card-tale" onclick="startCamera();return false;">
+                  <div class="card card-light-danger">
                     <div class="card-body">
-                      <p class="mb-4">Scan</p>
-                      <p class="fs-30 mb-2"> <img style="width:10%;" src="images/dashboard/qr-code.png" alt=""> QR Code</p>
+                      <p class="mb-4">Please Click</p>
+                      <p class="fs-30 mb-2">Account Settings</p>
+                      <p style="visibility: hidden;">0.22% (30 days)</p>
                     </div>
                   </div>
                 </div>
