@@ -47,12 +47,12 @@
             </a>
         </div>
 
-        <x-primary-button class="w-full items-center justify-center mt-5 text-white dark:text-white">
+        <x-primary-button class="w-full h-10 items-center justify-center mt-5 text-white dark:text-white">
             {{ __('Log in') }}
         </x-primary-button>
     </form>
 
-    <x-primary-button class="w-full items-center justify-center mt-2 text-white dark:text-white">
+    <x-primary-button class="w-full h-10 items-center justify-center mt-2 text-white dark:text-white">
         <a href="{{ route('/') }}">
         Home Page
         </a>
