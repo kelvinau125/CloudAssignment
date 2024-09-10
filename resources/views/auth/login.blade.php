@@ -7,7 +7,7 @@
     </div>
 
     <h4>Hello! let's get started</h4>
-    <h6 class="text-gray-300">Sign in to continue as Student.</h6>
+    <h6 class="text-gray-700">Sign in to continue as Student.</h6>
 
     <form method="POST" action="{{ route('login') }}" class="mt-3">
         @csrf
@@ -41,20 +41,20 @@
         </div>
 
         <div class="flex items-center justify-end mt-2">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                    href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                href="{{ route('register') }}">
+                Dont have an account? Create
+            </a>
         </div>
 
         <x-primary-button class="w-full items-center justify-center mt-5 text-white dark:text-white">
             {{ __('Log in') }}
         </x-primary-button>
-
-        <x-primary-button class="w-full items-center justify-center mt-2 text-white dark:text-white">
-            Home Page
-        </x-primary-button>
     </form>
+
+    <x-primary-button class="w-full items-center justify-center mt-2 text-white dark:text-white">
+        <a href="{{ route('dashboard') }}">
+        Home Page
+        </a>
+    </x-primary-button>
 </x-guest-layout>
