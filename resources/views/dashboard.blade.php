@@ -5,16 +5,6 @@
         </h2>
     </x-slot>
 
-    <!-- <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
     {{-- <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -444,7 +434,7 @@
             </div>
             <div class="col-md-6 grid-margin transparent">
               <div class="row">
-                <a href="{{ route('educatordashboard') }}" class="col-md-6 mb-4 stretch-card transparent">
+                <a href="{{ route('login') }}" class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-light-danger">
                     <div class="card-body">
                       <p class="mb-4">Are you a teacher?</p>
@@ -464,12 +454,12 @@
                 </a>
               </div>
               <div class="row">
-                <a href="pages/small-game/games.php" class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                  <div class="card card-light-blue">
+                <a href="{{ route('test') }}" class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-light-danger">
                     <div class="card-body">
-                      <p class="mb-4">Are you a guest?</p>
-                      <p class="fs-30 mb-2">Play</p>
-                      <p>Small Game</p>
+                      <p class="mb-4">Are you a admin?</p>
+                      <p class="fs-30 mb-2">Admin Login</p>
+                      <p>or sign up</p>
                     </div>
                   </div>
                 </a>
