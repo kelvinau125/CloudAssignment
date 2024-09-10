@@ -443,7 +443,7 @@
                     </div>
                   </div>
                 </a>
-                <a href="student_login.php" class="col-md-6 mb-4 stretch-card transparent">
+                <a href="student_logine.php" class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-dark-blue">
                     <div class="card-body">
                       <p class="mb-4">Are you a student?</p>
@@ -454,10 +454,10 @@
                 </a>
               </div>
               <div class="row">
-                <a href="" class="col-md-6 mb-4 stretch-card transparent">
-                  <div class="card card-light-danger">
+                <a href="{{ route('test') }}" class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                  <div class="card card-light-blue">
                     <div class="card-body">
-                      <p class="mb-4">Are you a admin?</p>
+                      <p class="mb-4">Are you a Admin?</p>
                       <p class="fs-30 mb-2">Admin Login</p>
                       <p>or sign up</p>
                     </div>
