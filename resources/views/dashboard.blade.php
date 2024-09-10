@@ -454,7 +454,7 @@
                 </a>
               </div>
               <div class="row">
-                <a href="{{ route('test') }}" class="col-md-6 mb-4 stretch-card transparent">
+                <a href="" class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-light-danger">
                     <div class="card-body">
                       <p class="mb-4">Are you a admin?</p>
