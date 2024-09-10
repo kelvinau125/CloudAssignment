@@ -53,7 +53,7 @@
     </form>
 
     <x-primary-button class="w-full items-center justify-center mt-2 text-white dark:text-white">
-        <a href="{{ route('dashboard') }}">
+        <a href="{{ route('/') }}">
         Home Page
         </a>
     </x-primary-button>
