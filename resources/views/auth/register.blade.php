@@ -56,4 +56,10 @@
             {{ __('Register') }}
         </x-primary-button>
     </form>
+
+    <x-primary-button class="w-full h-10 items-center justify-center mt-2 text-white dark:text-white">
+        <a href="{{ route('/') }}">
+        Home Page
+        </a>
+    </x-primary-button>
 </x-guest-layout>
