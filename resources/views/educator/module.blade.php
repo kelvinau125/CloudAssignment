@@ -9,13 +9,13 @@
         <div class="container-fluid page-body-wrapper">
 
             @include('educator.educatorSideBar')
-            
+
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <a class="btn btn-primary float-right" href="add_question.php">Add</a>
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card mt-2">
                             <div class="card-body">
+                                <a class="btn btn-primary float-right" href="{{ route('addQuestion') }}">Add</a>
                                 <h4 class="card-title">Quizs</h4>
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="studenttable">
@@ -66,10 +66,8 @@
                                                             <a class="dropdown-item"
                                                                 href="edit_question.php?id=">Edit</a>
                                                             <!-- Delete option -->
-                                                            <a class="dropdown-item delete"
-                                                                data-arg= "">Delete</a>
-                                                            <a class="dropdown-item"
-                                                                href="">Generate
+                                                            <a class="dropdown-item delete" data-arg= "">Delete</a>
+                                                            <a class="dropdown-item" href="">Generate
                                                                 QR</a>
                                                         </div>
                                                     </div>

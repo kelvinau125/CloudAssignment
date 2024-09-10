@@ -444,7 +444,7 @@
             </div>
             <div class="col-md-6 grid-margin transparent">
               <div class="row">
-                <a href="pages\teacher\teacher_login.php" class="col-md-6 mb-4 stretch-card transparent">
+                <a href="{{ route('module') }}" class="col-md-6 mb-4 stretch-card transparent">
                   <div class="card card-tale">
                     <div class="card-body">
                       <p class="mb-4">Please Click</p>

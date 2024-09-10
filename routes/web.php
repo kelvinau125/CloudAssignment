@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,17 @@ Route::get('/module', function () {
     return view('educator/module');
 })->name('module');
 
+Route::get('/addQuestion', function () {
+    return view('educator/addQuestion');
+})->name('addQuestion');
+
 Route::get('/educatordashboard', function () {
     return view('educator/educatordashboard');
 })->name('educatordashboard');
+
+Route::post('/add-quiz', [ModuleController::class, 'store'])->name('add.quiz');
+Route::get('/questions', [ModuleController::class, 'index'])->name('question.list');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
