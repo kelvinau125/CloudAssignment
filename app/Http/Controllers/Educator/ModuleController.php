@@ -65,5 +65,23 @@ class ModuleController extends Controller
     public function destroy(string $id)
     {
         //
+         // Find the module by its ID
+         $module = Module::find($id);
+
+         if (!$module) {
+             // If the module is not found, return a 404 response
+             return response()->json(['message' => 'Module not found'], 404);
+         }
+ 
+         try {
+             // Delete the module
+             $module->delete();
+ 
+             // Return a success response
+             return response()->json(['message' => 'Module deleted successfully'], 200);
+         } catch (\Exception $e) {
+             // Handle any errors during the deletion process
+             return response()->json(['message' => 'Error deleting module'], 500);
+         }
     }
 }
