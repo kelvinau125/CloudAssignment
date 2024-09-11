@@ -51,7 +51,7 @@
                     </a>
 
                     <a href="{{ route('content.list') }}" class="col-md-6 mb-4 stretch-card transparent">
-                        <div class="card card-light-danger">
+                        <div class="card card-dark-blue">
                             <div class="card-body">
                                 <x-heroicon-o-user class="w-6 h-6 mb-5" />
                                 <p class="fs-30 text-right">Manage Content</p>
@@ -70,7 +70,7 @@
                         </div>
                     </a> --}}
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <a href="{{ route('admin.login') }}" class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                         <div class="card card-light-blue">
                             <div class="card-body">
@@ -89,47 +89,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
         {{-- Yield Something --}}
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-title">Advanced Table</p>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="table-responsive">
-                                    <table class="display expandable-table" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Quiz#</th>
-                                                <th>Title</th>
-                                                <th>Score</th>
-                                                <th>Status</th>
-                                                <th>Date</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>HAHAHAH</td>
-                                                <td>1/10</td>
-                                                <td><label class="badge badge-warning">Open</label></td>
-                                                <td>-</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         @yield('admin-list-content')
         {{-- End Yield --}}
 
