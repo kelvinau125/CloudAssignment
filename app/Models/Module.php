@@ -17,4 +17,9 @@ class Module extends Model
     {
         return $this->hasMany(Question::class, 'moduleID');
     }
+
+    public function educator()
+    {
+        return $this->belongsTo(User::class, 'educatorID');
+    }
 }

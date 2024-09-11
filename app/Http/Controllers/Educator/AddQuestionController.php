@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Educator;
 
 use App\Models\Module;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ModuleController extends Controller
+class AddQuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index() {}
+    public function index()
+    {
+        //
+    }
 
     /**
      * Show the form for creating a new resource.

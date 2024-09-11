@@ -15,8 +15,12 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card mt-2">
                             <div class="card-body">
-                                <a class="btn btn-primary float-right" href="{{ route('addQuestion') }}">Add</a>
-                                <h4 class="card-title">Quizs</h4>
+
+                                <div class="flex flex-row items-center justify-between"> 
+                                    <h4 class="card-title">Quizs</h4>
+                                    <a class="btn btn-primary w-28 mb-3" href="{{ route('addQuestion') }}">Add</a>
+                                </div>
+                                
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="studenttable">
                                         <thead>
@@ -34,45 +38,37 @@
                                                     Created By
                                                 </th>
                                                 <th>
+                                                    Created Date
+                                                </th>
+                                                <th>
                                                     Action
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-
+                                            @foreach ($modules as $module)
                                             <tr>
-                                                <td class="py-1">
-                                                    1
-                                                </td>
-                                                <td>
-                                                    QUESTION NAME
-                                                </td>
-                                                <td>
-                                                    2
-                                                </td>
-                                                <td>
-                                                    USERNAME
-                                                </td>
+                                                <td class="py-1">{{ $module->id }}</td>
+                                                <td>{{ $module->title }}</td>
+                                                <td>{{ $module->questions_count }}</td>
+                                                <td>{{ $module->educator->name ?? 'N/A' }}</td>
+                                                <td>{{ $module->created_at->format('Y-m-d H:i:s') }}</td>
                                                 <td>
                                                     <div class="dropdown">
                                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                                             id="dropdownMenuButton" data-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false">
-                                                            <!-- Triple-dot icon -->
                                                             ...
                                                         </button>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <!-- Edit option -->
-                                                            <a class="dropdown-item"
-                                                                href="edit_question.php?id=">Edit</a>
-                                                            <!-- Delete option -->
-                                                            <a class="dropdown-item delete" data-arg= "">Delete</a>
-                                                            <a class="dropdown-item" href="">Generate
-                                                                QR</a>
+                                                            <a class="dropdown-item" href="">Edit</a>
+                                                            <a class="dropdown-item delete" data-id="{{ $module->id }}" href="#">Delete</a>
+                                                            <a class="dropdown-item" href="#">Generate QR</a>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -84,3 +80,10 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    $(document).ready(function() {
+        $('#studenttable').DataTable({ });
+    });
+</script>
+
