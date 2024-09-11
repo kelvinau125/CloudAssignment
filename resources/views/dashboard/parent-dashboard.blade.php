@@ -1,3 +1,4 @@
+<x-app-layout>
 <div class="main-panel" style="width: 100%;">
     <div class="content-wrapper">
         <div class="row">
@@ -148,3 +149,4 @@
     </footer>
     <!-- partial -->
 </div>
+</x-app-layout>
