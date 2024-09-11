@@ -26,10 +26,10 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Educator User',
-                'email' => 'educator@gmail.com',
+                'email' => '1@gmail.com',
                 'user_role' => 'educator',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                'password' => Hash::make('11111111'),
                 'remember_token' => \Illuminate\Support\Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),

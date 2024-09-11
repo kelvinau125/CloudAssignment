@@ -28,14 +28,18 @@ Route::get('/educatordashboard', function () {
     return view('educator/educatordashboard');
 })->name('educatordashboard');
 
-Route::post('/add-quiz', [ModuleController::class, 'store'])->name('add.quiz');
-Route::get('/questions', [ModuleController::class, 'index'])->name('question.list');
+// Route::post('/add-quiz', [ModuleController::class, 'store'])->name('add.quiz');
+// Route::get('/questions', [ModuleController::class, 'index'])->name('question.list');
+
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Educator
+    Route::post('/module/store', [ModuleController::class, 'store'])->name('module.store');
 });
 
 require __DIR__.'/auth.php';
