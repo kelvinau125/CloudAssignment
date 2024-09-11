@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Educator\ModuleController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -16,17 +16,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/module', function () {
-    return view('educator/module');
-})->name('module');
-
-Route::get('/addQuestion', function () {
-    return view('educator/addQuestion');
-})->name('addQuestion');
-
-Route::get('/educatordashboard', function () {
-    return view('educator/educatordashboard');
-})->name('educatordashboard');
 
 // Route::post('/add-quiz', [ModuleController::class, 'store'])->name('add.quiz');
 // Route::get('/questions', [ModuleController::class, 'index'])->name('question.list');
@@ -40,6 +29,8 @@ Route::middleware('auth')->group(function () {
 
     // Educator
     Route::post('/module/store', [ModuleController::class, 'store'])->name('module.store');
+    Route::get('/module', function () { return view('educator/module'); })->name('module');
+    Route::get('/addQuestion', function () { return view('educator/addQuestion'); })->name('addQuestion');
 });
 
 require __DIR__.'/auth.php';
