@@ -44,6 +44,16 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Parent User',
+                'email' => 'parent@gmail.com',
+                'user_role' => 'parent',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password123'),
+                'remember_token' => \Illuminate\Support\Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

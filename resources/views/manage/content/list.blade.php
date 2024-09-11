@@ -6,6 +6,17 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-title">Content List</p>
+
+                    <!-- Search form -->
+                    <form method="GET" action="{{ route('content.list') }}">
+                        <div class="input-group mb-3">
+                            <input type="text" name="search" class="form-control" placeholder="Search content..." value="{{ request()->input('search') }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+
                     <div class="row">
                         <div class="col-12">
                             <div class="table-responsive">
@@ -26,7 +37,7 @@
                                             <tr>
                                                 <td>{{ $content->id }}</td>
                                                 <td>{{ $content->title }}</td>
-                                                <td>{{ Str::limit($content->description, 50) }}</td> <!-- Truncated description -->
+                                                <td>{{ Str::limit($content->description, 50) }}</td>
                                                 <td>{{ $content->content_type }}</td>
                                                 <td>{{ $content->content_path }}</td>
                                                 <td>{{ $content->created_at }}</td>
@@ -37,8 +48,10 @@
                                 </table>
 
                                 <!-- Pagination links -->
-                                <div class="d-flex justify-content-end"> <!-- Changed to justify-content-end for right alignment -->
-                                    {{ $contents->links() }}
+                                <div class="d-flex justify-content-end align-items-center mt-3">
+                                    <div class="ml-3">
+                                        {{ $contents->appends(['search' => request()->input('search')])->links() }} <!-- Keep the search query in pagination -->
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -3,18 +3,28 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
-use Illuminate\View\View;
-use App\Models\Content; // Make sure to import the Content model
+use App\Models\Content;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
 {
-    public function list(Request $request): View
+    public function list(Request $request)
     {
-        // Paginate the content, showing 10 entries per page
-        $contents = Content::paginate(10);
+        // Get the search query from the request
+        $search = $request->input('search');
 
-        // Pass the paginated content data to the view
-        return view('manage.content.list', ['contents' => $contents]);
+        // Query the Content model with optional search filter
+        $contents = Content::when($search, function ($query, $search) {
+                return $query->where('title', 'like', "%{$search}%")
+                             ->orWhere('description', 'like', "%{$search}%")
+                             ->orWhere('content_type', 'like', "%{$search}%");
+            })
+            ->paginate(10); // Paginate results with 10 per page
+
+        // Pass contents and search term back to the view
+        return view('manage.content.list', [
+            'contents' => $contents,
+            'search' => $search,
+        ]);
     }
 }
