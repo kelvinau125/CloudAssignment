@@ -56,7 +56,7 @@ class AddQuestionController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Module uploaded successfully');
+        return redirect()->route('module.index')->with('success', 'Module uploaded successfully');
     }
 
     /**

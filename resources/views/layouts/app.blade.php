@@ -62,6 +62,9 @@
         <script src=" {{ asset('vendors/datatables.net-bs4/dataTables.bootstrap4.js') }} "></script>
         <script src="{{ asset('js/dataTables.select.min.js') }} "></script>
 
+        <!-- Include SweetAlert2 library -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <!-- End plugin js for this page -->
         <!-- inject:js -->
         <script src="{{ asset('js/off-canvas.js') }} "></script>

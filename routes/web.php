@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     // Educator
     Route::post('/addquestion/store', [AddQuestionController::class, 'store'])->name('addquestion.store');
     Route::get('/module', [ModuleController::class, 'index'])->name('module.index');
+    Route::delete('/module/{id}', [ModuleController::class, 'destroy'])->name('module.destroy');
 
     // Route::get('/module', function () { return view('educator/module'); })->name('module');
     Route::get('/addQuestion', function () { return view('educator/addQuestion'); })->name('addQuestion');
