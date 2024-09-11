@@ -6,10 +6,10 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ContentController extends Controller
 {
     public function list(Request $request): View
     {
-        return view('manage.user.list');
+        return view('manage.content.list');
     }
 }

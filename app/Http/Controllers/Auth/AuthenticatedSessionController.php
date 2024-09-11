@@ -24,11 +24,20 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // Authenticate user
         $request->authenticate();
 
+        // Regenerate session
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Check if the request URL contains 'manage' to differentiate admin login
+        if ($request->is('manage/*')) {
+            // Redirect to the admin dashboard if the URL prefix is 'manage'
+            return redirect()->intended(route('manage.dashboard'));
+        }
+
+        // Redirect to the normal dashboard for regular users
+        return redirect()->intended(route('dashboard'));
     }
 
     /**
