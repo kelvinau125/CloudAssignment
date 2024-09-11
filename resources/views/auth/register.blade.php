@@ -1,5 +1,12 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <div class="w-32 mb-3">
+        <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
+    </div>
+
+      <h4>Hi, Teacher?</h4>
+      <h6 class="text-gray-700">Signing up is easy. It only takes a few steps</h6>
+
+    <form method="POST" action="{{ route('register') }}" class="mt-3">
         @csrf
 
         <!-- Name -->
@@ -43,10 +50,16 @@
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
         </div>
+
+        <x-primary-button class="w-full h-10 items-center justify-center mt-5 text-white dark:text-white">
+            {{ __('Register') }}
+        </x-primary-button>
     </form>
+
+    <x-primary-button class="w-full h-10 items-center justify-center mt-2 text-white dark:text-white">
+        <a href="{{ route('/') }}">
+        Home Page
+        </a>
+    </x-primary-button>
 </x-guest-layout>
