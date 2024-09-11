@@ -12,7 +12,7 @@
                 <div class="content-wrapper">
 
                     <!-- Form for Module and Questions -->
-                    <form id="quizForm" action="{{ route('module.store') }}" method="POST">
+                    <form id="quizForm" action="{{ route('addquestion.store') }}" method="POST">
                         @csrf
 
                         <!-- Button to Upload Module -->

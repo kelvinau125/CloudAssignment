@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Educator\AddQuestionController;
+use App\Http\Controllers\Educator\ModuleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Educator\ModuleController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -28,8 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Educator
-    Route::post('/module/store', [ModuleController::class, 'store'])->name('module.store');
-    Route::get('/module', function () { return view('educator/module'); })->name('module');
+    Route::post('/addquestion/store', [AddQuestionController::class, 'store'])->name('addquestion.store');
+    Route::get('/module', [ModuleController::class, 'index'])->name('module.index');
+
+    // Route::get('/module', function () { return view('educator/module'); })->name('module');
     Route::get('/addQuestion', function () { return view('educator/addQuestion'); })->name('addQuestion');
 });
 
