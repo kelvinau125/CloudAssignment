@@ -7,7 +7,7 @@
     </div>
 
     <h4>Hello! let's get started</h4>
-    <h6 class="text-gray-700">Sign in to continue as Student.</h6>
+    <h6 class="text-gray-700">Sign in to continue as Teacher.</h6>
 
     <form method="POST" action="{{ route('login') }}" class="mt-3">
         @csrf
