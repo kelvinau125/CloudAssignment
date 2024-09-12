@@ -57,8 +57,8 @@ class ParentController extends Controller
             'email' => $request->email,
             'user_role' => 'parent', // Set the user role to 'parent'
             'password' => Hash::make($request->password), // Hash the password
-            'remember_token' => Str::random(60),
-            
+            'remember_token' => Str::random(length: 60),
+
         ]);
         event(new Registered($user));
         Auth::login($user);
@@ -66,6 +66,38 @@ class ParentController extends Controller
 
         // You can redirect or return a success message
         return redirect()->route('parent.login')->with('success', 'Account created successfully. Please log in.');
+
+    }
+
+    public function studentView(): View
+    {
+        //
+        return view("parent.registerStudent");
+    }
+
+    public function registerStudent(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', Rules\Password::defaults()],
+
+        ]);
+
+        $student = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'user_role' => 'student', // Set the user role to 'parent'
+            'password' => Hash::make($request->password), // Hash the password
+            'remember_token' => Str::random(length: 60),
+            'parent_user'=> Auth::id(),
+
+        ]);
+
+        event(new Registered($student));
+
+        return redirect(to: route('dashboard', absolute: false));
+
 
     }
 

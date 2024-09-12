@@ -87,7 +87,12 @@
                         <div class="card-body">
                             <div class="flex justify-between items-center ">
                                 <p class="card-title pt-3 items-center">Students Table</p>
-                                <button class="btn btn-sm btn-success mr-2">Add Student</button>
+                                <a href="{{ route('registerStudent') }}" class="btn btn-sm btn-success mr-2">
+                                    Add
+                                    Student
+                                </a>
+
+                                <!-- <button class="btn btn-sm btn-success mr-2">Add Student</button> -->
 
                             </div>
                             <div class="row">

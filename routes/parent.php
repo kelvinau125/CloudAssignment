@@ -15,6 +15,9 @@ Route::group(['prefix' => 'parent'], function () {
     Route::get('register', [ParentController::class, 'create'])->name(name: 'register');
     Route::post('register', [ParentController::class, 'store']);
 
+    Route::get('registerStudent', [ParentController::class,'studentView'])->name(name: 'registerStudent');
+    Route::post('registerStudent',[ParentController::class,'registerStudent']);
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('parent.dashboard');
