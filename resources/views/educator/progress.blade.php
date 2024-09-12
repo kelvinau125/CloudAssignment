@@ -43,7 +43,7 @@
                                                     <td>{{ $submission->review }}</td>
                                                     <td>{{ $submission->sub_date }}</td>
                                                     <td>
-                                                        <a href="{{ route('feedback.form', $submission->id) }}">
+                                                        <a href="{{ route('feedback.index', $submission->id) }}">
                                                             <label class="badge badge-info cursor-pointer">Feedback</label>
                                                         </a>                                                    </td>
                                                 </tr>

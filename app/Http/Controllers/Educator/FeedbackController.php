@@ -29,14 +29,14 @@ class FeedbackController extends Controller
     public function index($submissionId)
     {
         //
-                // Fetch the submission and related module questions
-                $submission = Submission::with('module')->findOrFail($submissionId);
-                $answers = json_decode($submission->answer, true); // Decode the JSON answers
-        
-                // Get the list of questions from the module
-                $questions = Question::where('moduleID', $submission->moduleID)->get();
-        
-                return view('educator.feedback', compact('submission', 'answers', 'questions'));
+        // Fetch the submission and related module questions
+        $submission = Submission::with('module')->findOrFail($submissionId);
+        $answers = json_decode($submission->answer, true); // Decode the JSON answers
+
+        // Get the list of questions from the module
+        $questions = Question::where('moduleID', $submission->moduleID)->get();
+
+        return view('educator.feedback', compact('submission', 'answers', 'questions'));
     }
 
     /**
