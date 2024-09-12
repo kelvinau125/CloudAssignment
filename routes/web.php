@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
     // Educator
     Route::post('/addquestion/store', [AddQuestionController::class, 'store'])->name('addquestion.store');
-    Route::get('/module', [ModuleController::class, 'index'])->name('module.index');
+    Route::get('/module', [ModuleController::class, 'index'])->name('educator.module.index');
     Route::delete('/module/{id}', [ModuleController::class, 'destroy'])->name('module.destroy');
     Route::get('/modules/{id}/edit', [AddQuestionController::class, 'edit'])->name('modules.edit');
     Route::put('/modules/{id}', [AddQuestionController::class, 'update'])->name('modules.update');

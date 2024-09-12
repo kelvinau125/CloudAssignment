@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('score');
             $table->string('maxscore'); 
             $table->string('sub_date'); 
-            $table->string('review'); 
+            $table->string('review')->nullable(); 
+            $table->string('feedback')->nullable(); 
             $table->string('status'); 
             $table->timestamps();
         });

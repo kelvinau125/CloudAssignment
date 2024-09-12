@@ -57,7 +57,7 @@ class AddQuestionController extends Controller
             ]);
         }
 
-        return redirect()->route('module.index')->with('success', 'Module uploaded successfully');
+        return redirect()->route('educator.module.index')->with('success', 'Module uploaded successfully');
     }
 
     /**
@@ -114,7 +114,7 @@ class AddQuestionController extends Controller
             ]);
         }
 
-        return redirect()->route('module.index')->with('success', 'Module updated successfully');
+        return redirect()->route('educator.module.index')->with('success', 'Module updated successfully');
     }
 
     /**
