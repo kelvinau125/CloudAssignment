@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('question', function (Blueprint $table) {
             $table->id();
+            $table->string('question');
             $table->string('ans1');
             $table->string('ans2');
             $table->string('cors_ans');

@@ -63,7 +63,7 @@
                                                             </button>
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" href="{{ route('modules.edit', $module->id) }}">Edit</a>
                                                                 <form action="{{ route('module.destroy', $module->id) }}" method="POST" class="delete-form">
                                                                     @csrf
                                                                     @method('DELETE')
