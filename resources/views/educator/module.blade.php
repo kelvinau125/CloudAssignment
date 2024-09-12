@@ -7,7 +7,6 @@
 
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper">
-
             @include('educator.educatorSideBar')
 
             <div class="main-panel">
@@ -63,12 +62,23 @@
                                                             </button>
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="{{ route('modules.edit', $module->id) }}">Edit</a>
-                                                                <form action="{{ route('module.destroy', $module->id) }}" method="POST" class="delete-form">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="dropdown-item">Delete</button>
+                                                                @if (!in_array($module->id, $disabledModuleIds))
+                                                                    <a class="dropdown-item" href="{{ route('modules.edit', $module->id) }}">Edit</a>
+                                                                    <form action="{{ route('module.destroy', $module->id) }}" method="POST" class="delete-form">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="dropdown-item">Delete</button>
+                                                                    </form>
+                                                                @else
+                                                                <form action="#" method="POST" class="delete-form">
+                                                                    <button type="submit" class="dropdown-item" disabled>Edit</button>
                                                                 </form>
+                                                                    <form action="#" method="POST" class="delete-form">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="dropdown-item" disabled>Delete</button>
+                                                                    </form>
+                                                                @endif
                                                                 <a class="dropdown-item" href="http://api.qrserver.com/v1/create-qr-code/?data={{ urlencode(url('module/' . $module->id)) }}&size=300x300" target="_blank">Generate QR</a>
                                                             </div>
                                                         </div>
@@ -103,8 +113,8 @@
         @endif
     });
 
-      // Handle delete button clicks
-      document.querySelectorAll('.delete-form').forEach(form => {
+    // Handle delete button clicks
+    document.querySelectorAll('.delete-form').forEach(form => {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 

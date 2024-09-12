@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Educator;
 
 use App\Models\Module;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class ModuleController extends Controller
@@ -14,8 +15,13 @@ class ModuleController extends Controller
     public function index()
     {
         // Retrieve all modules with their associated questions
-        $modules = Module::withCount('questions')->get();
-        return view('educator.module', compact('modules'));
+        $modules = Module::withCount('questions')->get(); // Assuming you have a relationship for questions count
+        $disabledModuleIds = DB::table('redis')->pluck('moduleID')->toArray();
+    
+        return view('educator.module', [
+            'modules' => $modules,
+            'disabledModuleIds' => $disabledModuleIds,
+        ]);
     }
 
     /**
