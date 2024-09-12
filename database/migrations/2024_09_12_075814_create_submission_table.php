@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('moduleID')->constrained('module')->onDelete('cascade')->onUpdate('cascade');
             $table->string('score');
             $table->string('maxscore'); 
-            $table->string('feedback'); 
+            $table->string('review'); 
             $table->timestamps();
         });
     }
