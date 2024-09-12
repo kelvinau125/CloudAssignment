@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('question', function (Blueprint $table) {
+        Schema::create('submission', function (Blueprint $table) {
             $table->id();
-            $table->string('question');
-            $table->string('ans1');
-            $table->string('ans2');
-            $table->string('cors_ans');
+            $table->foreignId('studentID')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('moduleID')->constrained('module')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('score');
+            $table->string('maxscore'); 
+            $table->string('feedback'); 
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('question');
+        Schema::dropIfExists('submission');
     }
 };

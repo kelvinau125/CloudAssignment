@@ -1,11 +1,11 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" href="teacher_homepage.php?tid=">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Homepage</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('dashboard') }}">
@@ -15,21 +15,28 @@
         </li>
 
         <li class="nav-item flex">
-            <a class="nav-link"href="teacher_homepage.php?tid=">
+            <a class="nav-link"href="{{ route('module.index') }}">
                 <i class="icon-head menu-icon"></i>
-                <span class="menu-title">View / Create Quiz</span>
+                <span class="menu-title">Module</span>
+            </a>
+        </li>
+
+        <li class="nav-item flex">
+            <a class="nav-link"href="{{ route('module.index') }}">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Student Progress</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="teacher_homepage.php?tid=">
+            <a class="nav-link" href="{{ route('profile.edit') }}">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Account Setting</span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="teacher_homepage.php?tid=">
+            <a class="nav-link" href="{{ route('logout') }}">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Logout</span>
             </a>

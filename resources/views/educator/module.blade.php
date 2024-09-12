@@ -17,7 +17,7 @@
                             <div class="card-body">
 
                                 <div class="flex flex-row items-center justify-between">
-                                    <h4 class="card-title">Quizs</h4>
+                                    <h4 class="card-title">Module</h4>
                                     <a class="btn btn-primary w-28 mb-3" href="{{ route('addQuestion') }}">Add</a>
                                 </div>
 
@@ -26,10 +26,10 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    Quiz ID
+                                                    Module ID
                                                 </th>
                                                 <th>
-                                                    Quiz Title
+                                                    Module Title
                                                 </th>
                                                 <th>
                                                     Total Question
@@ -63,13 +63,13 @@
                                                             </button>
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="">Edit</a>
+                                                                <a class="dropdown-item" href="{{ route('modules.edit', $module->id) }}">Edit</a>
                                                                 <form action="{{ route('module.destroy', $module->id) }}" method="POST" class="delete-form">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button type="submit" class="dropdown-item">Delete</button>
                                                                 </form>
-                                                                <a class="dropdown-item" href="#">Generate QR</a>
+                                                                <a class="dropdown-item" href="http://api.qrserver.com/v1/create-qr-code/?data={{ urlencode(url('module/' . $module->id)) }}&size=300x300" target="_blank">Generate QR</a>
                                                             </div>
                                                         </div>
                                                     </td>

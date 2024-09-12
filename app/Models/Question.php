@@ -11,7 +11,7 @@ class Question extends Model
 
     protected $table = 'question';
 
-    protected $fillable = ['ans1', 'ans2', 'cors_ans', 'moduleID'];
+    protected $fillable = ['question', 'ans1', 'ans2', 'cors_ans', 'moduleID'];
 
     public function module()
     {

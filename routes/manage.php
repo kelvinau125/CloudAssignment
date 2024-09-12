@@ -15,8 +15,19 @@ Route::group(['prefix' => 'manage'], function () {
     // Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('admin.loginCheck');
     // Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('admin.logout');
 
+    Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('user/store', [UserController::class, 'store'])->name('user.store');
     Route::get('user/list', [UserController::class, 'list'])->name('user.list');
+    Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('user/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
+    
+    Route::get('content/create', [ContentController::class, 'create'])->name('content.create');
+    Route::post('content/store', [ContentController::class, 'store'])->name('content.store');
     Route::get('content/list', [ContentController::class, 'list'])->name('content.list');
+    Route::get('content/edit/{id}', [ContentController::class, 'edit'])->name('content.edit');
+    Route::put('content/update/{id}', [ContentController::class, 'update'])->name('content.update');
+    Route::delete('content/delete/{id}', [ContentController::class, 'destroy'])->name('content.delete');
 
 
     Route::get('/dashboard', function () {
