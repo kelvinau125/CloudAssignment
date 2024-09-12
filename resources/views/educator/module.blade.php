@@ -17,7 +17,7 @@
                             <div class="card-body">
 
                                 <div class="flex flex-row items-center justify-between">
-                                    <h4 class="card-title">Quizs</h4>
+                                    <h4 class="card-title">Module</h4>
                                     <a class="btn btn-primary w-28 mb-3" href="{{ route('addQuestion') }}">Add</a>
                                 </div>
 
@@ -26,10 +26,10 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    Quiz ID
+                                                    Module ID
                                                 </th>
                                                 <th>
-                                                    Quiz Title
+                                                    Module Title
                                                 </th>
                                                 <th>
                                                     Total Question

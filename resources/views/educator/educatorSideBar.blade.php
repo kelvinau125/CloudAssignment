@@ -17,7 +17,14 @@
         <li class="nav-item flex">
             <a class="nav-link"href="{{ route('module.index') }}">
                 <i class="icon-head menu-icon"></i>
-                <span class="menu-title">View / Create Quiz</span>
+                <span class="menu-title">Module</span>
+            </a>
+        </li>
+
+        <li class="nav-item flex">
+            <a class="nav-link"href="{{ route('module.index') }}">
+                <i class="icon-head menu-icon"></i>
+                <span class="menu-title">Student Progress</span>
             </a>
         </li>
 
