@@ -34,46 +34,47 @@
                 </div>
             </div>
             <div class="col-md-6 grid-margin transparent">
-                <div class="row">
-                    <a href="{{ route('educator.module.index') }}" class="col-md-6 mb-4 stretch-card transparent">
-                        <div class="card card-tale">
-                          <div class="card-body">
-                            <p class="mb-4">Please Click</p>
-                            <p class="fs-30 mb-2"> <img style="width:10%;" src="images/dashboard/qr-code.png" alt=""> Module </p>
-                            <p style="visibility: hidden;">10.00% (30 days)</p>
-                          </div>
-                        </div>
-                      </a>
-                      <a href="student_login.php" class="col-md-6 mb-4 stretch-card transparent">
-                        <div class="card card-dark-blue">
-                          <div class="card-body">
-                            <p class="mb-4">Please Click</p>
-                            <p class="fs-30 mb-2">Feedback</p>
-                            <p style="visibility: hidden;">22.00% (30 days)</p>
-                          </div>
-                        </div>
-                      </a>
-                </div>
-                <div class="row">
-                    <a href="pages/small-game/games.php" class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                      <div class="card card-light-blue">
-                        <div class="card-body">
-                          <p class="mb-4">Please Click</p>
-                          <p class="fs-30 mb-2">QR Code</p>
-                          <p style="visibility: hidden;">2.00% (30 days)</p>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="col-md-6 stretch-card transparent">
-                      <div class="card card-light-danger">
-                        <div class="card-body">
-                          <p class="mb-4">Please Click</p>
-                          <p class="fs-30 mb-2">Account Settings</p>
-                          <p style="visibility: hidden;">0.22% (30 days)</p>
-                        </div>
-                      </div>
+              <div class="row">
+                <a href="{{ route('educator.module.index') }}" class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-tale">
+                    <div class="card-body">
+                      <p class="mb-4">Please Click</p>
+                      <p class="fs-30 mb-2"> <img style="width:10%;" src="images/dashboard/qr-code.png" alt=""> View Module </p>
+                      <p style="visibility: hidden;">10.00% (30 days)</p>
                     </div>
                   </div>
+                </a>
+                <a href="{{ route('progress.index') }}" class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-dark-blue">
+                    <div class="card-body">
+                      <p class="mb-4">Please Click</p>
+                      <p class="fs-30 mb-2">Student Progress</p>
+                      <p style="visibility: hidden;">22.00% (30 days)</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+                <div class="row">
+                  <a href="{{ route('addQuestion') }}" class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="card card-dark-blue">
+                      <div class="card-body">
+                        <p class="mb-4">Please Click</p>
+                        <p class="fs-30 mb-2">Create Module</p>
+                        <p style="visibility: hidden;">22.00% (30 days)</p>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="{{ route('profile.edit') }}" class="col-md-6 mb-4 stretch-card transparent">
+                    <div class="card card-light-danger">
+                      <div class="card-body">
+                        <p class="mb-4">Please Click</p>
+                        <p class="fs-30 mb-2">Account Settings</p>
+                        <p style="visibility: hidden;">0.22% (30 days)</p>
+                      </div>
+                    </div>
+                  </a>
+                  </div>
+                </div>
             </div>
         </div>
         <footer class="footer">

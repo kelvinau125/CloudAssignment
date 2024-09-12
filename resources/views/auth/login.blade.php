@@ -7,7 +7,7 @@
     </div>
 
     <h4>Hello! let's get started</h4>
-    <h6 class="text-gray-700">Sign in to continue as Student.</h6>
+    <h6 class="text-gray-700">Sign in to continue as Educator.</h6>
 
     <form method="POST" action="{{ route('login') }}" class="mt-3">
         @csrf
@@ -31,21 +31,21 @@
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        {{-- <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox"
                     class="rounded border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
                     name="remember">
                 <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
             </label>
-        </div>
+        </div> --}}
 
-        <div class="flex items-center justify-end mt-2">
+        {{-- <div class="flex items-center justify-end mt-2">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                 href="{{ route('register') }}">
                 Dont have an account? Create
             </a>
-        </div>
+        </div> --}}
 
         <x-primary-button class="w-full h-10 items-center justify-center mt-5 text-white dark:text-white">
             {{ __('Log in') }}
