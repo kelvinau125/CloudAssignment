@@ -25463,6 +25463,17 @@ code {
     background: #f59095;
 }
 
+.card.card-mainGreen {
+    --tw-bg-opacity: 1;
+    background-color: rgba(74, 222, 128, var(--tw-bg-opacity)) /* #4ade80 */;
+}
+
+.card.card-mainGreen:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(134, 239, 172, var(--tw-bg-opacity)) /* #86efac */;
+}
+
+
 .card-inverse-primary {
     background: rgba(75, 73, 172, 0.2);
     border: 1px solid #45439e;

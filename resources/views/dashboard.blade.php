@@ -27,6 +27,8 @@
         @include('dashboard.admin-dashboard')
     @elseif(Auth::user()->user_role == 'educator')
         @include('dashboard.educator-dashboard')
+    @elseif(Auth::user()->user_role == 'parent')
+        @include('dashboard.parent-dashboard')
     @elseif(Auth::user()->user_role == 'student')
         @include('dashboard.student-dashboard')
     @endif

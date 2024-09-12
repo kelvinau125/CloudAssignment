@@ -1,3 +1,4 @@
+<x-app-layout>
 <div class="main-panel" style="width: 100%;">
     <div class="content-wrapper">
         <div class="row">
@@ -44,7 +45,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('student.login') }}" class="col-md-6 mb-4 stretch-card transparent">
+                    <a href="student_logine.php" class="col-md-6 mb-4 stretch-card transparent">
                         <div class="card card-dark-blue">
                             <div class="card-body">
                                 <p class="mb-4">Are you a student?</p>
@@ -148,3 +149,4 @@
     </footer>
     <!-- partial -->
 </div>
+</x-app-layout>
