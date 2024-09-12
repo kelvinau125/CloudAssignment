@@ -29,6 +29,7 @@
                                             <th>Role</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -40,6 +41,14 @@
                                                 <td>{{ $user->user_role }}</td>
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>{{ $user->updated_at }}</td>
+                                                <td>
+                                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                                    <form action="{{ route('user.delete', $user->id) }}" method="POST" style="display:inline-block;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -48,9 +57,15 @@
                                 <!-- Pagination links -->
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div class="ml-3">
-                                        {{ $users->appends(['search' => request()->input('search')])->links() }} <!-- Keep the search query in pagination -->
+                                        {{ $users->appends(['search' => request()->input('search')])->links() }}
                                     </div>
                                 </div>
+
+                                <!-- Create New User Button under the table -->
+                                <div class="d-flex justify-content-end mt-3">
+                                    <a href="{{ route('user.create') }}" class="btn btn-primary">Create New User</a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
