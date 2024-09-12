@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-6 grid-margin transparent">
                     <div class="row">
-                        <a href="{{ route('login') }}" class="col-md-6 mb-4 stretch-card transparent">
+                        <a href="{{ route('student.list') }}" class="col-md-6 mb-4 stretch-card transparent">
                             <div class="card card-light-danger">
                                 <div class="card-body">
                                     <p class="mb-4">Please Click</p>
@@ -80,8 +80,9 @@
             </div>
             {{-- End Content Wrapper --}}
 
+            @yield(section: 'student-list-content')
 
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
@@ -92,9 +93,8 @@
                                     Student
                                 </a>
 
-                                <!-- <button class="btn btn-sm btn-success mr-2">Add Student</button> -->
-
                             </div>
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="table-responsive">
@@ -117,10 +117,8 @@
                                                     <td>4</td>
                                                     <td>Students</td>
                                                     <td>
-                                                        <!-- Edit Button -->
                                                         <a href="{{ route("content.edit", 1)}}"
                                                             class="btn btn-sm btn-primary">Edit</a>
-                                                        <!-- Delete button (form with method DELETE) -->
                                                         <form action="{{ route('content.delete', 1) }}" method="POST"
                                                             style="display:inline-block;">
                                                             @csrf
@@ -132,6 +130,7 @@
                                                     </td>
 
                                                 </tr>
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -140,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div>
             <!-- CRUD FOR MANAGE STUDENTS when click... -->

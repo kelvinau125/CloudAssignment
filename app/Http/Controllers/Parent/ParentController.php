@@ -22,6 +22,33 @@ class ParentController extends Controller
     public function index()
     {
         //
+        $students = User::where('user_role', 'student')->get();
+        // Return the view with students data
+        return view('dashboard.parent-dashboard', compact('students'));
+    }
+
+    public function list(Request $request)
+    {
+        // Get the search query from the request
+        $search = $request->input('search');
+
+        // Query the User model with optional search filter
+        $users = User::where('user_role', 'student') // Filter by role
+            ->where('parent_user', Auth::id()) // Additional filter based on authenticated user's ID
+            ->when($search, function ($query, $search) {
+                return $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%")
+                        ->orWhere('user_role', 'like', "%{$search}%");
+                });
+            })
+            ->paginate(10);  // Use paginate instead of get or all
+
+        // Pass users and search term back to the view
+        return view('parent.list', [
+            'users' => $users,
+            'search' => $search,
+        ]);
     }
 
     /**
@@ -90,7 +117,7 @@ class ParentController extends Controller
             'user_role' => 'student', // Set the user role to 'parent'
             'password' => Hash::make($request->password), // Hash the password
             'remember_token' => Str::random(length: 60),
-            'parent_user'=> Auth::id(),
+            'parent_user' => Auth::id(),
 
         ]);
 
@@ -115,6 +142,10 @@ class ParentController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::findOrFail($id);
+
+        return view('parent.edit', compact(var_name: 'user'));
+
     }
 
     /**
@@ -123,6 +154,17 @@ class ParentController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'user_role' => 'required',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->update($validated);
+
+        return redirect()->route('student.list')->with('success', 'User updated successfully!');
+
     }
 
     /**
@@ -131,5 +173,10 @@ class ParentController extends Controller
     public function destroy(string $id)
     {
         //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('student.list')->with('success', 'User deleted successfully!');
+
     }
 }
