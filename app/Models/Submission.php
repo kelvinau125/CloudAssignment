@@ -19,6 +19,8 @@ class Submission extends Model
         'score',
         'maxscore',
         'review',
+        'feedback',
+        'status',
     ];
 
     /**

@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Educator\AddQuestionController;
-use App\Http\Controllers\Educator\ModuleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Educator\ModuleController;
+use App\Http\Controllers\Educator\FeedbackController;
+use App\Http\Controllers\Educator\SubmissionController;
+use App\Http\Controllers\Educator\AddQuestionController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -17,9 +19,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/progress', function () {
-    return view('educator.progress');
-})->middleware(['auth', 'verified'])->name('progress');
+// Route::get('/progress', function () {
+//     return view('educator.progress');
+// })->middleware(['auth', 'verified'])->name('progress');
 
 // Route::post('/add-quiz', [ModuleController::class, 'store'])->name('add.quiz');
 // Route::get('/questions', [ModuleController::class, 'index'])->name('question.list');
@@ -37,6 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/module/{id}', [ModuleController::class, 'destroy'])->name('module.destroy');
     Route::get('/modules/{id}/edit', [AddQuestionController::class, 'edit'])->name('modules.edit');
     Route::put('/modules/{id}', [AddQuestionController::class, 'update'])->name('modules.update');
+    Route::get('/educator/progress', [SubmissionController::class, 'index'])->name('progress.index');
+
+
+    Route::get('/feedback/{submission}', [FeedbackController::class, 'index'])->name('feedback.index'); 
+    Route::post('/feedback/submit/{id}', [FeedbackController::class, 'submit'])->name('feedback.submit');
+    Route::put('/feedback/update/{id}', [FeedbackController::class, 'update'])->name('feedback.update');
+    Route::delete('/feedback/delete/{id}', [FeedbackController::class, 'delete'])->name('feedback.delete');    
 
     // Route::get('/module', function () { return view('educator/module'); })->name('module');
     Route::get('/addQuestion', function () { return view('educator/addQuestion'); })->name('addQuestion');

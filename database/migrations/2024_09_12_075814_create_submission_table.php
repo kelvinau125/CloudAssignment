@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('sub_date'); 
             $table->string('review')->nullable(); 
             $table->string('feedback')->nullable(); 
-            $table->string('status'); 
+            $table->string('status')->nullable(); 
+            $table->json('answer')->nullable(); 
             $table->timestamps();
         });
     }
