@@ -17,6 +17,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/progress', function () {
+    return view('educator.progress');
+})->middleware(['auth', 'verified'])->name('progress');
 
 // Route::post('/add-quiz', [ModuleController::class, 'store'])->name('add.quiz');
 // Route::get('/questions', [ModuleController::class, 'index'])->name('question.list');
