@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('studentID')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('moduleID')->constrained('module')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('score');
-            $table->string('maxscore'); 
-            $table->string('sub_date'); 
-            $table->string('feedback'); 
-            $table->string('status'); 
+            $table->string('score')->nullable();
+            $table->string('maxscore')->nullable(); 
+            $table->string('sub_date')->nullable(); 
+            $table->string('feedback')->nullable(); 
+            $table->string('status')->nullable(); 
             $table->timestamps();
         });
     }

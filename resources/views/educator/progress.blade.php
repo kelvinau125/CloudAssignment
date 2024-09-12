@@ -26,19 +26,19 @@
                                         <thead>
                                             <tr>
                                                 <th>
-                                                    Module ID
+                                                    Submission ID
                                                 </th>
                                                 <th>
                                                     Module Title
                                                 </th>
                                                 <th>
-                                                    Total Question
+                                                    Score
                                                 </th>
                                                 <th>
-                                                    Created By
+                                                    Status
                                                 </th>
                                                 <th>
-                                                    Created Date
+                                                    Submission Date
                                                 </th>
                                                 <th>
                                                     Action
@@ -57,26 +57,13 @@
                                                     2
                                                 </td>
                                                 <td>
+                                                    <label class="badge badge-warning">Open</label>
+                                                </td>
+                                                <td>
                                                     USERNAME
                                                 </td>
                                                 <td>
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                            id="dropdownMenuButton" data-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">
-                                                            <!-- Triple-dot icon -->
-                                                            ...
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <!-- Edit option -->
-                                                            <a class="dropdown-item"
-                                                                href="edit_question.php?id=">Edit</a>
-                                                            <!-- Delete option -->
-                                                            <a class="dropdown-item delete" data-arg="">Delete</a>
-                                                            <a class="dropdown-item" href="">Generate
-                                                                QR</a>
-                                                        </div>
-                                                    </div>
+                                                    <label class="badge badge-info">Feedback</label>
                                                 </td>
                                             </tr>
                                         </tbody>
