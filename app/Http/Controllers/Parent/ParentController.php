@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Parent;
 
 use App\Http\Controllers\Controller;
+use App\Models\Submission;
 use App\Models\User;
+use App\Models\Module;
 use Illuminate\Auth\Events\Registered;
 
 use Illuminate\Http\Request;
@@ -22,9 +24,7 @@ class ParentController extends Controller
     public function index()
     {
         //
-        $students = User::where('user_role', 'student')->get();
-        // Return the view with students data
-        return view('dashboard.parent-dashboard', compact('students'));
+        
     }
 
     public function list(Request $request)
@@ -100,6 +100,31 @@ class ParentController extends Controller
     {
         //
         return view("parent.registerStudent");
+    }
+    //View Result Function
+
+    public function viewStudentResults()
+    {
+        // Get the logged-in parent's ID
+        $parentId = Auth::id();
+
+        // Get all students registered by this parent
+        $students = User::where('parent_user', $parentId)->pluck('id');
+
+        // Fetch all submissions by the parent's students
+        $results = Submission::whereIn('studentID', $students)->get();
+
+        // Return the view with the filtered results
+        return view('parent.student-results', compact('results'));
+
+
+    }
+    // View All Modules
+    public function viewModules()
+    {
+        $modules = Module::all();
+
+        return view('parent.student-modules', compact('modules'));
     }
 
     public function registerStudent(Request $request)

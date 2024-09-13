@@ -50,27 +50,24 @@
                                 <div class="card-body">
                                     <p class="mb-4">Please Click</p>
                                     <p class="fs-30 mb-2">View Contents</p>
-                                    <p>or sign up</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="row">
-                        <a href="{{ route('admin.login') }}" class="col-md-6 mb-4  stretch-card transparent">
+                        <a href="{{ route('studentResult.list') }}" class="col-md-6 mb-4  stretch-card transparent">
                             <div class="card card-light-blue">
                                 <div class="card-body">
                                     <p class="mb-4">Please Click</p>
-                                    <p class="fs-30 mb-2">Admin Login</p>
-                                    <p>or sign up</p>
+                                    <p class="fs-30 mb-2">View Results</p>
                                 </div>
                             </div>
                         </a>
-                        <a href="{{ route('parent.login') }}" class="col-md-6 mb-4 stretch-card transparent text-white">
+                        <a href="{{ route('modules.list') }}" class="col-md-6 mb-4 stretch-card transparent text-white">
                             <div class="card card-mainGreen">
                                 <div class="card-body">
                                     <p class="mb-4">Please Click</p>
-                                    <p class="fs-30 mb-2">Parent Login</p>
-                                    <p>or sign up</p>
+                                    <p class="fs-30 mb-2">View Modules</p>
                                 </div>
                             </div>
                         </a>
@@ -82,68 +79,8 @@
 
             @yield(section: 'student-list-content')
 
-            <!-- <div class="row">
-                <div class="col-md-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="flex justify-between items-center ">
-                                <p class="card-title pt-3 items-center">Students Table</p>
-                                <a href="{{ route('registerStudent') }}" class="btn btn-sm btn-success mr-2">
-                                    Add
-                                    Student
-                                </a>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="table-responsive">
-                                        <table class="display expandable-table" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Student ID</th>
-                                                    <th>Student Name</th>
-                                                    <th>Student Email</th>
-                                                    <th>Parent ID</th>
-                                                    <th>User Role</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>名字</td>
-                                                    <td>1@gmail.com</td>
-                                                    <td>4</td>
-                                                    <td>Students</td>
-                                                    <td>
-                                                        <a href="{{ route("content.edit", 1)}}"
-                                                            class="btn btn-sm btn-primary">Edit</a>
-                                                        <form action="{{ route('content.delete', 1) }}" method="POST"
-                                                            style="display:inline-block;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                                onclick="return confirm('Are you sure you want to delete this content?');">Delete</button>
-                                                        </form>
-
-                                                    </td>
-
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
-        <div>
-            <!-- CRUD FOR MANAGE STUDENTS when click... -->
-        </div>
+        >
 
 
         <!-- content-wrapper ends -->

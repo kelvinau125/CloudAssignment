@@ -16,15 +16,23 @@ Route::group(['prefix' => 'parent'], function () {
     Route::post('register', [ParentController::class, 'store']);
 
     //Register Student Route
-    Route::get('registerStudent', [ParentController::class,'studentView'])->name(name: 'registerStudent');
-    Route::post('registerStudent',[ParentController::class,'registerStudent']);
+    Route::get('registerStudent', [ParentController::class, 'studentView'])->name(name: 'registerStudent');
+    Route::post('registerStudent', [ParentController::class, 'registerStudent']);
 
     //Get Student Data
     Route::get('student/list', [ParentController::class, 'list'])->name('student.list');
-    //CRUD
+    //Student CRUD
     Route::get('student/edit/{id}', [ParentController::class, 'edit'])->name('student.edit');
     Route::put('student/update/{id}', [ParentController::class, 'update'])->name('student.update');
     Route::delete('student/delete/{id}', [ParentController::class, 'destroy'])->name(name: 'student.delete');
+
+    //View Results
+    Route::get('student/result', [ParentController::class, 'viewStudentResults'])->name('studentResult.list');
+
+    // Route::get('student/{id}/results', [ParentController::class, 'viewStudentResults'])->name('studentResultTest.list');
+
+    //View Modules
+    Route::get('modules', [ParentController::class, 'viewModules'])->name('modules.list');
 
     Route::get('/dashboard', function () {
         return view('dashboard');
