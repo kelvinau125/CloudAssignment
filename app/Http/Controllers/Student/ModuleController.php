@@ -158,9 +158,9 @@ class ModuleController extends Controller
                         'answer' => $jsonOutput,  // Save the JSON output in the 'answer' column
                         'score' => $score,
                         'maxscore' => $maxScore,
-                        'review' => 'pending',  // Default review status
+                        'review' => null,  // Default review status
                         'feedback' => null,     // Feedback can be added later
-                        'status' => 'submitted', // Status indicates quiz completion
+                        'status' => 'completed', // Status indicates quiz completion
                         'sub_date' => now()      // Set submission date
                     ]
                 );

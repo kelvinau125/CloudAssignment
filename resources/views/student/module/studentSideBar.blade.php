@@ -14,7 +14,7 @@
             </a>
         </li>
 
-        <li class="nav-item flex">
+        <li class="nav-item">
             <a class="nav-link"href="{{ route('module.index') }}">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Module</span>
@@ -22,7 +22,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('module.index') }}">
+            <a class="nav-link" href="{{ route('review.index') }}">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Review</span>
             </a>
