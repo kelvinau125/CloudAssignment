@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="student_logine.php" class="col-md-6 mb-4 stretch-card transparent">
+                        <a href="{{route('viewContent.list')}}" class="col-md-6 mb-4 stretch-card transparent">
                             <div class="card card-dark-blue">
                                 <div class="card-body">
                                     <p class="mb-4">Please Click</p>

@@ -26,6 +26,9 @@ Route::group(['prefix' => 'parent'], function () {
     Route::put('student/update/{id}', [ParentController::class, 'update'])->name('student.update');
     Route::delete('student/delete/{id}', [ParentController::class, 'destroy'])->name(name: 'student.delete');
 
+    //View Contents
+    Route::get('viewContent',[ParentController::class,'viewContents'])->name('viewContent.list');
+
     //View Results  
     Route::get('student/result', [ParentController::class, 'viewStudentResults'])->name('studentResult.list');
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Submission;
 use App\Models\User;
 use App\Models\Module;
+use App\Models\Content;
 use Illuminate\Auth\Events\Registered;
 
 use Illuminate\Http\Request;
@@ -101,6 +102,16 @@ class ParentController extends Controller
         //
         return view("parent.registerStudent");
     }
+
+    //View Contents 
+    public function viewContents()
+    {
+
+        $results = Content::all();
+
+        return view('parent.view-contents', compact('results'));
+    }
+
     //View Result Function
 
     public function viewStudentResults()
