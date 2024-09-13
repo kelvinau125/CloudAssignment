@@ -27,10 +27,8 @@
                                         <th>ID</th>
                                         <th>Title</th>
                                         <th>Educator ID</th>
-                                        <!-- <th>Create At</th>
-                                        <th>Updated At</th> -->
                                         <th>Action</th>
-                                    </tr>   
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($modules as $module)
@@ -38,10 +36,8 @@
                                             <td>{{ $module->id }}</td>
                                             <td>{{ $module->title }}</td>
                                             <td>{{ $module->educatorID }}</td>
-                                            <!-- <td>{{ $module->created_at }}</td>
-                                            <td>{{ $module->updated_at }}</td> -->
                                             <td>
-                                                <a href="{{ route('studentResult.list', $module->id) }}"
+                                                <a href="{{ route('studentModule.list', $module->id) }}"
                                                     class="btn btn-sm btn-primary">View</a>
                                             </td>
                                         </tr>

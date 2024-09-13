@@ -24,7 +24,7 @@ class ParentController extends Controller
     public function index()
     {
         //
-        
+
     }
 
     public function list(Request $request)
@@ -126,6 +126,23 @@ class ParentController extends Controller
 
         return view('parent.student-modules', compact('modules'));
     }
+    public function viewModuleResults($module_id)
+    {
+        // Get the logged-in parent's ID
+        $parent = Auth::user();
+
+        // Get all students registered by this parent
+        $students = $parent->students->pluck('id');
+
+        // Fetch all submissions by the parent's students for the given module
+        $results = Submission::where('moduleID', $module_id)
+            ->whereIn('studentID', $students)
+            ->get();
+
+        // Pass the results to the view
+        return view('parent.module-results', compact('results'));
+    }
+
 
     public function registerStudent(Request $request)
     {

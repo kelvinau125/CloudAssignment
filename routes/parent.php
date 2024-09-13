@@ -26,13 +26,16 @@ Route::group(['prefix' => 'parent'], function () {
     Route::put('student/update/{id}', [ParentController::class, 'update'])->name('student.update');
     Route::delete('student/delete/{id}', [ParentController::class, 'destroy'])->name(name: 'student.delete');
 
-    //View Results
+    //View Results  
     Route::get('student/result', [ParentController::class, 'viewStudentResults'])->name('studentResult.list');
 
     // Route::get('student/{id}/results', [ParentController::class, 'viewStudentResults'])->name('studentResultTest.list');
 
-    //View Modules
+    //View Modules  
     Route::get('modules', [ParentController::class, 'viewModules'])->name('modules.list');
+
+    //View Modules && Student
+    Route::get('module/{module_id}/results',[ParentController::class,'viewModuleResults'])->name('studentModule.list');
 
     Route::get('/dashboard', function () {
         return view('dashboard');
