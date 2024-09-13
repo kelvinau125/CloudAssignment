@@ -11,7 +11,10 @@ Route::group(['prefix' => 'student'], function () {
     Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('student.loginCheck');
     Route::get('index', [ModuleController::class, 'index'])->name('module.index');
     Route::post('modules/{module}/join', [ModuleController::class, 'join'])->name('modules.join');
-   
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('student.logout');
+
+    Route::post('/quiz/save', [ModuleController::class, 'store'])->name('quiz.save');
+
     // login success and go to dashboard
     Route::get('/dashboard', function () {
         return view('dashboard');

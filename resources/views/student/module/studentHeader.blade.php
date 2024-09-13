@@ -1,5 +1,7 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
+<!-- cdn sweetalert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- plugins:css -->
 <link rel="stylesheet" href="../../vendors/feather/feather.css">

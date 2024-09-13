@@ -37,7 +37,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('logout') }}">
+            <a class="nav-link" href="{{ route('student.logout') }}">
                 <i class="icon-head menu-icon"></i>
                 <span class="menu-title">Logout</span>
             </a>

@@ -21,6 +21,8 @@ class Submission extends Model
         'review',
         'feedback',
         'status',
+        'answer',
+        'sub_date'
     ];
 
     /**
