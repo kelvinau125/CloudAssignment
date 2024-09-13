@@ -27,7 +27,7 @@
                                             <th>Title</th>
                                             <th>Description</th>
                                             <th>Content Type</th>
-                                            <th>Content Path</th>
+                                            <th>Content</th>
                                             <th>Actions</th> <!-- Add Actions column -->
                                         </tr>
                                     </thead>
@@ -38,7 +38,14 @@
                                                 <td>{{ $content->title }}</td>
                                                 <td>{{ Str::limit($content->description, 50) }}</td>
                                                 <td>{{ $content->content_type }}</td>
-                                                <td>{{ $content->content_path }}</td>
+                                                <td>
+                                                    @if ($content->content_type === 'image' && $content->content_path)
+                                                        {{-- <img src="{{ Storage::disk('s3')->url($content->content_path) }}" alt="{{ $content->title }}" style="width: 100px; height: auto;"> --}}
+                                                        <img src="{{ asset('storage/' . $content->content_path) }}" alt="{{ $content->title }}" style="width: 100px; height: auto;">
+                                                    @else
+                                                        {{ $content->content_path }}
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <!-- Edit button -->
                                                     <a href="{{ route('content.edit', $content->id) }}" class="btn btn-sm btn-primary">Edit</a>
