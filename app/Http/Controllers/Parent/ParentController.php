@@ -170,6 +170,36 @@ class ParentController extends Controller
 
     }
 
+    //Report
+    public function generateReport()
+    {
+        // Get the logged-in parent's ID
+        $parent = Auth::user();
+
+        // Get all students registered by this parent
+        $students = $parent->students->pluck('id');
+
+        // Fetch all submissions by the parent's students
+        $submissions = Submission::whereIn('studentID', $students)->get();
+
+        // Report metrics
+        $totalSubmissions = $submissions->count();
+        $averageScoresPerModule = $submissions->groupBy('moduleID')->map(function ($moduleSubmissions) {
+            return $moduleSubmissions->avg('score');
+        });
+        $completionRatePerModule = $submissions->groupBy('moduleID')->map(function ($moduleSubmissions) {
+            $totalAttempts = $moduleSubmissions->count();
+            $totalMaxScores = $moduleSubmissions->sum('maxscore');
+            return ($totalAttempts / $totalMaxScores) * 100; // Calculate the completion rate
+        });
+
+        // You can add other calculations as needed, such as effectiveness of interventions.
+
+        // Return the report view with the calculated data
+        return view('parent.report', compact('totalSubmissions', 'averageScoresPerModule', 'completionRatePerModule'));
+    }
+
+
     /**
      * Display the specified resource.
      */

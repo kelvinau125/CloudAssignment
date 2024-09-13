@@ -72,6 +72,16 @@
                             </div>
                         </a>
                     </div>
+                    <div class="row">
+                        <a href="{{ route('student.reporting') }}" class="col-md-6 mb-4  stretch-card transparent">
+                            <div class="card card-dark-blue">
+                                <div class="card-body">
+                                    <p class="mb-4">Please Click</p>
+                                    <p class="fs-30 mb-2">Report</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
 
                 </div>
             </div>

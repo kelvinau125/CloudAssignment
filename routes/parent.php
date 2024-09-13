@@ -37,6 +37,8 @@ Route::group(['prefix' => 'parent'], function () {
     //View Modules && Student
     Route::get('module/{module_id}/results',[ParentController::class,'viewModuleResults'])->name('studentModule.list');
 
+    Route::get('/parent/reporting', [ParentController::class, 'generateReport'])->name('student.reporting');
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('parent.dashboard');
