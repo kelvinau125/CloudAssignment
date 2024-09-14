@@ -19,19 +19,27 @@
                                 </div>
 
                                 <div class="list-group">
-                                    @foreach($modules as $module)
-                                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                                            <div class="d-flex flex-column">
-                                                <h5 class="mb-1">{{ $module->title }}</h5>
-                                            </div>
-                                            <form action="{{ route('modules.join', $module->id) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-primary">
-                                                    {{ $module->hasPartialAnswers ? 'Resume' : 'Join' }}
-                                                </button>
-                                            </form>
+                                    @if($modules->isEmpty())
+                                        <!-- Display a message when no modules are available -->
+                                        <div class="list-group-item">
+                                            <p class="mb-1">No modules available yet.</p>
                                         </div>
-                                    @endforeach
+                                    @else
+                                        <!-- Display modules when they exist -->
+                                        @foreach($modules as $module)
+                                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                <div class="d-flex flex-column">
+                                                    <h5 class="mb-1">{{ $module->title }}</h5>
+                                                </div>
+                                                <form action="{{ route('modules.join', $module->id) }}" method="GET">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary">
+                                                        {{ $module->hasPartialAnswers ? 'Resume' : 'Join' }}
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>

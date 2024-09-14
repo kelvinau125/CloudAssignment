@@ -64,18 +64,7 @@
                             </div>
                         </div>
                     </a>
-                    <div class="col-md-6 mb-4 stretch-card transparent">
-                        <div class="card card-tale" onclick="startCamera();return false;">
-                            <div class="card-body">
-                                <p class="mb-4">Scan</p>
-                                <p class="fs-30 mb-2"> <img style="width:10%;" src="images/dashboard/qr-code.png"
-                                        alt=""> QR Code</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <a href="{{ route('parent.login') }}" class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                    <a href="{{ route('parent.login') }}" class="col-md-6 mb-4 stretch-card transparent">
                         <div class="card card-mainGreen">
                             <div class="card-body">
                                 <p class="mb-4">Are you a Parent?</p>
@@ -84,7 +73,6 @@
                             </div>
                         </div>
                     </a>
-
                 </div>
             </div>
         </div>
