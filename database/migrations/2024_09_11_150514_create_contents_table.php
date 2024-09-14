@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contents', function (Blueprint $table) {
-            $table->id();  // Primary key
-            $table->string('title');  // Content title
-            $table->text('description');  // Content description
-            $table->string('content_type');  // Either 'image' or 'video'
-            $table->string('content_path')->nullable();  // Path to content (image/video)
+            $table->id(); 
+            $table->string('title');
+            $table->text('description'); 
+            $table->string('content_type');  
+            $table->string('content_path')->nullable();  
             $table->softDeletes();
-            $table->timestamps();  // Standard timestamps: created_at and updated_at
+            $table->timestamps();  
         });
     }
 
