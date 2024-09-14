@@ -13,15 +13,15 @@ class ContentSeeder extends Seeder
      */
     public function run(): void
     {
-        // $contents = [
-        //     [
-        //         'title' => 'Introduction to Laravel',
-        //         'description' => 'This content covers the basics of Laravel framework.',
-        //         'content_type' => 'video',
-        //         'content_path' => 'videos/laravel-intro.mp4',
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ],
+        $contents = [
+            [
+                'title' => 'Introduction to Laravel',
+                'description' => 'This content covers the basics of Laravel framework.',
+                'content_type' => 'image',
+                'content_path' => 'https://laravelcloud.s3.amazonaws.com/images/1726309964_badminton_post_1.jpeg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
         //     [
         //         'title' => 'Advanced Eloquent',
         //         'description' => 'Learn about advanced Eloquent features in Laravel.',
@@ -102,7 +102,7 @@ class ContentSeeder extends Seeder
         //         'created_at' => now(),
         //         'updated_at' => now(),
         //     ],
-        // ];
+        ];
 
         // Insert data into the contents table
         DB::table('contents')->insert($contents);
