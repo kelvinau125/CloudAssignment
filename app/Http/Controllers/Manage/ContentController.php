@@ -37,60 +37,31 @@ class ContentController extends Controller
     /**
      * Store a newly created content in storage.
      */
-    // public function store(Request $request)
-    // {
-    //     // Validate the incoming request
-    //     $validated = $request->validate([
-    //         'title' => 'required|max:255',
-    //         'description' => 'required',
-    //         'content_type' => 'required',
-    //         'content_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
-    //     ]);
-
-    //     // Handle the file upload if an image is uploaded
-    //     if ($request->hasFile('content_image')) {
-    //         // Get the uploaded file
-    //         $file = $request->file('content_image');
-
-    //         // Generate a unique filename to avoid collisions
-    //         $fileName = time() . '_' . $file->getClientOriginalName();
-
-    //         // Store the image in S3 under the 'images' folder
-    //         $path = Storage::disk('s3')->put('images', $file, $fileName);
-
-    //         // Save the S3 file path in the database
-    //         $validated['content_path'] = $path;
-    //     }
-
-    //     // Create the content and save it to the database
-    //     Content::create($validated);
-
-    //     // Redirect back to the content list with a success message
-    //     return redirect()->route('content.list')->with('success', 'Content created successfully!');
-    // }
-
     public function store(Request $request)
 {
-    // Validate the incoming request
     $validated = $request->validate([
         'title' => 'required|max:255',
         'description' => 'required',
         'content_type' => 'required',
-        'content_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
+        'content_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
     ]);
 
     if ($request->hasFile('content_image')) {
         $file = $request->file('content_image');
+        
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $path = $file->storeAs('images', $fileName, 'public');
-        $validated['content_path'] = $path;
+
+        $path = Storage::disk('s3')->putFileAs('images', $file, $fileName, 'public');
+
+        $url = Storage::disk('s3')->url($path);
+
+        $validated['content_path'] = $url;
     }
+
     Content::create($validated);
 
     return redirect()->route('content.list')->with('success', 'Content created successfully!');
 }
-
-
 
     /**
      * Show the form for editing the specified content.

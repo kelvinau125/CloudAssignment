@@ -40,17 +40,15 @@
                                                 <td>{{ $content->content_type }}</td>
                                                 <td>
                                                     @if ($content->content_type === 'image' && $content->content_path)
-                                                        {{-- <img src="{{ Storage::disk('s3')->url($content->content_path) }}" alt="{{ $content->title }}" style="width: 100px; height: auto;"> --}}
-                                                        <img src="{{ asset('storage/' . $content->content_path) }}" alt="{{ $content->title }}" style="width: 100px; height: auto;">
+                                                        <img src="{{ $content->content_path }}" alt="{{ $content->title }}" style="width: 100px; height: auto;">
+
                                                     @else
                                                         {{ $content->content_path }}
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <!-- Edit button -->
                                                     <a href="{{ route('content.edit', $content->id) }}" class="btn btn-sm btn-primary">Edit</a>
 
-                                                    <!-- Delete button (form with method DELETE) -->
                                                     <form action="{{ route('content.delete', $content->id) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
@@ -62,7 +60,6 @@
                                     </tbody>
                                 </table>
 
-                                <!-- Pagination links -->
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div class="ml-3">
                                         {{ $contents->appends(['search' => request()->input('search')])->links() }} <!-- Keep the search query in pagination -->
