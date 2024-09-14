@@ -27,7 +27,7 @@
                                             <th>Title</th>
                                             <th>Description</th>
                                             <th>Content Type</th>
-                                            <th>Content Path</th>
+                                            <th>Content</th>
                                             <th>Actions</th> <!-- Add Actions column -->
                                         </tr>
                                     </thead>
@@ -38,12 +38,17 @@
                                                 <td>{{ $content->title }}</td>
                                                 <td>{{ Str::limit($content->description, 50) }}</td>
                                                 <td>{{ $content->content_type }}</td>
-                                                <td>{{ $content->content_path }}</td>
                                                 <td>
-                                                    <!-- Edit button -->
+                                                    @if ($content->content_type === 'image' && $content->content_path)
+                                                        <img src="{{ $content->content_path }}" alt="{{ $content->title }}" style="width: 100px; height: auto;">
+
+                                                    @else
+                                                        {{ $content->content_path }}
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     <a href="{{ route('content.edit', $content->id) }}" class="btn btn-sm btn-primary">Edit</a>
 
-                                                    <!-- Delete button (form with method DELETE) -->
                                                     <form action="{{ route('content.delete', $content->id) }}" method="POST" style="display:inline-block;">
                                                         @csrf
                                                         @method('DELETE')
@@ -55,7 +60,6 @@
                                     </tbody>
                                 </table>
 
-                                <!-- Pagination links -->
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div class="ml-3">
                                         {{ $contents->appends(['search' => request()->input('search')])->links() }} <!-- Keep the search query in pagination -->
