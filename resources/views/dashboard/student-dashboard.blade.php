@@ -13,10 +13,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 grid-margin stretch-card">
-                <video id="video" style="visibility: hidden; width: 0%; height: 0%"></video>
-
-                <div class="card tale-bg" id="weather_status" style="visibility: visible;">
+            <div class="col-md-6 grid-margin stretch-card" id="weather_status">
+                <div class="card tale-bg">
                     <div class="card-people mt-auto">
                         <img src={{ asset('assets/images/dashboard/people.svg') }} alt="people">
                         <div class="weather-info">
@@ -32,6 +30,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card" id="camera_qr" style="display:none">
+                <div id="qr-reader" style="width: 100%;"></div>
+                <div id="qr-reader-results"></div>
             </div>
             <div class="col-md-6 grid-margin transparent">
                 <div class="row">
@@ -55,18 +57,26 @@
                       </a>
                 </div>
                 <div class="row">
-                    
-                    <div class="col-md-6 stretch-card transparent">
-                      <div class="card card-light-danger">
-                        <div class="card-body">
-                        <a href="{{ route('profile.edit') }}">
-                          <p class="mb-4">Please Click</p>
-                          <p class="fs-30 mb-2">Account Settings</p>
-                          <p style="visibility: hidden;">0.22% (30 days)</p>
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-light-danger">
+                            <div class="card-body">
+                                <a href="{{ route('profile.edit') }}">
+                                    <p class="mb-4">Please Click</p>
+                                    <p class="fs-30 mb-2">Account Settings</p>
+                                </a>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
+                    
+                    <div class="col-md-6 mb-4 stretch-card transparent">
+                        <div class="card card-tale" onclick="startCamera();return false;">
+                            <div class="card-body">
+                                <p class="mb-4">Scan</p>
+                                <p class="fs-30 mb-2"><img style="width:10%;" src="images/dashboard/qr-code.png" alt=""> QR Code</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <footer class="footer">
@@ -84,7 +94,39 @@
                     <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span>
             </div>
             <!-- <video id="video" style="visibility: hidden; width: 0%; height: 0%"></video> -->
+            <!-- <video id="preview"></video> -->
         </footer>
         <!-- partial -->
     </div>
+
+
+    <script type="text/javascript">
+    function startCamera() {
+        const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+            window.location.href = decodedText;
+        };
+
+        const qrCodeErrorCallback = (errorMessage) => {
+            // Handle scan failure or errors
+            console.log(`QR Code Scan Error: ${errorMessage}`);
+        };
+
+        // Start the QR code scanner
+        let html5QrCode = new Html5Qrcode("qr-reader");
+        document.querySelector("#weather_status").style.display = "none";
+        document.querySelector("#camera_qr").style.display = "initial";
+        // Camera configuration
+        html5QrCode.start(
+            { facingMode: "environment" }, // Use rear camera
+            {
+                fps: 10,
+                qrbox: { width: 250, height: 250 }
+            },
+            qrCodeSuccessCallback,
+            qrCodeErrorCallback
+        ).catch(err => {
+            console.error(`Unable to start the camera: ${err}`);
+        });
+    }
+</script>
 </x-app-layout>

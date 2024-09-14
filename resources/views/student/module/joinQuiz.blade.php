@@ -28,15 +28,31 @@
                                             <div class="card mb-3">
                                                 <div class="card-body">
                                                     <h5 class="card-title text-center">{{ $question->question }}</h5>
-                                                    <div class="row text-center">
-                                                        @foreach($question->shuffledAnswers as $answer)
-                                                            <div class="col-md-4">
-                                                                <div class="form-check">
-                                                                    <input type="radio" class="form-check-input" name="question[{{ $question->id }}]" value="{{ $answer['id'] }}" id="answer-{{ $answer['id'] }}-{{ $question->id }}" {{ $answer['id'] == $question->preSelectedAnswer ? 'checked' : '' }}>
-                                                                    <label class="form-check-label" for="answer-{{ $answer['id'] }}-{{ $question->id }}">{{ $answer['text'] }}</label>
-                                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="answer-row">
+                                                                @foreach($question->shuffledAnswers as $index => $answer)
+                                                                    @if ($index % 2 == 0)
+                                                                        <div class="form-check">
+                                                                            <input type="radio" class="form-check-input" name="question[{{ $question->id }}]" value="{{ $answer['text'] }}" id="answer-{{ $answer['id'] }}-{{ $question->id }}" {{ $answer['id'] == $question->preSelectedAnswer ? 'checked' : '' }}>
+                                                                            <label class="form-check-label" for="answer-{{ $answer['id'] }}-{{ $question->id }}">{{ $answer['text'] }}</label>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
                                                             </div>
-                                                        @endforeach
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="answer-row">
+                                                                @foreach($question->shuffledAnswers as $index => $answer)
+                                                                    @if ($index % 2 != 0)
+                                                                        <div class="form-check">
+                                                                            <input type="radio" class="form-check-input" name="question[{{ $question->id }}]" value="{{ $answer['text'] }}" id="answer-{{ $answer['id'] }}-{{ $question->id }}" {{ $answer['id'] == $question->preSelectedAnswer ? 'checked' : '' }}>
+                                                                            <label class="form-check-label" for="answer-{{ $answer['id'] }}-{{ $question->id }}">{{ $answer['text'] }}</label>
+                                                                        </div>
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -134,6 +150,37 @@
                     }
                 });
             });
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: '{{ session('error') }}',
+                    confirmButtonText: 'Ok'
+                });
+            @endif
         });
+        
     </script>
+
+    <style>
+        .answer-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .form-check {
+            margin-bottom: 1rem; /* Adjust spacing between answers if needed */
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+        .col-md-6 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    </style>
 </x-app-layout>

@@ -117,22 +117,27 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-      
         $moduleId = $request->input('module_id');
         $studentId = $request->input('student_id');
         $answers = $request->input('question');
-      
+
+        // dd($request->input('question'));
          
         $output = [];
 
+        if (is_null($answers) || empty($answers)) {
+            return redirect()->back()->with('error', 'You must answer at least one question to save your progress');
+        }
+    
         // Convert answers array to desired JSON format
         foreach ($answers as $questionId => $answerId) {
             // Append the formatted array to the output
             $output[] = [
-                "answerId" => (int) $answerId,
+                "answerId" =>  $answerId,
                 "questionId" => (int) $questionId
             ];
         }
+        // dd($output);
         $jsonOutput = json_encode($output);
         // Get the total number of questions for the module
         $totalQuestions = Question::where('moduleID', $moduleId)->count();

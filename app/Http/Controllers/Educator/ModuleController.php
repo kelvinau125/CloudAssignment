@@ -16,7 +16,7 @@ class ModuleController extends Controller
     {
         // Retrieve all modules with their associated questions
         $modules = Module::withCount('questions')->get(); // Assuming you have a relationship for questions count
-        $disabledModuleIds = DB::table('redis')->pluck('moduleID')->toArray();
+        $disabledModuleIds = DB::table('submission')->pluck('moduleID')->toArray();
     
         return view('educator.module', [
             'modules' => $modules,
