@@ -67,9 +67,12 @@
                                                                     <a class="dropdown-item" href="{{ route('review.create', ['submission' => $submission->id]) }}">Add Review</a>
                                                                 @else
                                                                     <a class="dropdown-item" href="{{ route('review.create', ['submission' => $submission->id]) }}">Edit Review</a>
+                                                                    <a class="dropdown-item" href="{{ route('review.delete', ['submission' => $submission->id]) }}">Delete Review</a>
+
                                                                 @endif
                                                                 <a class="dropdown-item" href="{{ route('viewResult.index', ['submission' => $submission->id]) }}">View Result</a>
                                                                 <!-- Add additional dropdown items here as needed -->
+                                                                 
                                                             </div>
                                                         </div>
                                                     </td>
@@ -110,9 +113,9 @@
     </div>
 
     <!-- SweetAlert2 CDN -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Bootstrap JavaScript and Popper.js -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> Ensure Bootstrap bundle is loaded -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> Ensure Bootstrap bundle is loaded
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -143,6 +146,14 @@
                 text: "{{ session('success') }}",
                 timer: 3000,
                 showConfirmButton: false
+            });
+        @endif
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: '{{ session('error') }}',
+                confirmButtonText: 'Ok'
             });
         @endif
     </script>

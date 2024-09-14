@@ -49,13 +49,17 @@
         </div>
     </div>
 </x-app-layout>
+
+<!-- Include SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         @if (session('message'))
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
-                text: '{{ session('message') }}',
+                text: {!! json_encode(session('message')) !!}, // Avoiding encoding issues
                 confirmButtonText: 'Ok'
             });
         @endif
@@ -63,7 +67,7 @@
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
-                text: '{{ session('error') }}',
+                text: {!! json_encode(session('error')) !!}, // Avoiding encoding issues
                 confirmButtonText: 'Ok'
             });
         @endif

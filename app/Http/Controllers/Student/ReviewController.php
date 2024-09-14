@@ -69,9 +69,25 @@ class ReviewController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Submission $submission)
+    { 
+        if($submission==null || empty($submission)){
+            return redirect()->route('review.index')->with('error', 'Check went wrong please check again later.');
+        }
+        $submission->review = null;
+        $submission->save();
+
+        // // Find the submission by ID
+        // $submission = Submission::find($submissionId);
+
+        // if ($submission) {
+        //     // Set the review to null
+        //     $submission->review = null;
+        //     $submission->save();
+        // }
+
+        // Redirect or return response
+        return redirect()->route('review.index')->with('success', 'Review has been deleted successfully.');
     }
 
     /**

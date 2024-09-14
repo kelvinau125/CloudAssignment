@@ -16,9 +16,11 @@ Route::group(['prefix' => 'student'], function () {
     Route::get('modules/{module}/join', [ModuleController::class, 'join'])->name('modules.join');
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])->name('student.logout');
     Route::get('review/index', [ReviewController::class, 'index'])->name('review.index');
+    Route::get('/quiz/delete', [ModuleController::class, 'delete'])->name('quiz.delete');
     Route::post('/quiz/save', [ModuleController::class, 'store'])->name('quiz.save');
     Route::get('/review/create/{submission}', [ReviewController::class, 'create'])->name('review.create');
     Route::get('/review/edit/{submission}', [ReviewController::class, 'edit'])->name('review.edit');
+    Route::get('/review/delete/{submission}', [ReviewController::class, 'update'])->name('review.delete');
     Route::post('store', [ReviewController::class, 'store'])->name('review.store');
     Route::get('viewResult/index', [ResultController::class, 'index'])->name('viewResult.index');
     // login success and go to dashboard

@@ -39,7 +39,7 @@
                         @endforelse
 
                         <div class="text-center mt-4">
-                            <a href="{{ route('module.index') }}" class="btn btn-primary">Return to Modules</a>
+                            <a href="{{ route('review.index') }}" class="btn btn-primary">Return to Module Review</a>
                         </div>
                     </div>
                 </div>

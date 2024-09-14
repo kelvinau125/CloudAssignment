@@ -21,7 +21,7 @@
                                 @else
                                     <form id="quizForm" action="{{ route('quiz.save') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="module_id" value="{{ $module->id }}">
+                                        <input type="hidden" id="module_id" name="module_id" value="{{ $module->id }}">
                                         <input type="hidden" name="student_id" value="{{ auth()->user()->id }}">
 
                                         @foreach($questions as $question)
@@ -34,7 +34,7 @@
                                                                 @foreach($question->shuffledAnswers as $index => $answer)
                                                                     @if ($index % 2 == 0)
                                                                         <div class="form-check">
-                                                                            <input type="radio" class="form-check-input" name="question[{{ $question->id }}]" value="{{ $answer['text'] }}" id="answer-{{ $answer['id'] }}-{{ $question->id }}" {{ $answer['id'] == $question->preSelectedAnswer ? 'checked' : '' }}>
+                                                                            <input type="radio" class="form-check-input" name="question[{{ $question->id }}]" value="{{ $answer['text'] }}" id="answer-{{ $answer['id'] }}-{{ $question->id }}" {{ $answer['text'] == $question->preSelectedAnswer ? 'checked' : '' }}>
                                                                             <label class="form-check-label" for="answer-{{ $answer['id'] }}-{{ $question->id }}">{{ $answer['text'] }}</label>
                                                                         </div>
                                                                     @endif
@@ -46,7 +46,7 @@
                                                                 @foreach($question->shuffledAnswers as $index => $answer)
                                                                     @if ($index % 2 != 0)
                                                                         <div class="form-check">
-                                                                            <input type="radio" class="form-check-input" name="question[{{ $question->id }}]" value="{{ $answer['text'] }}" id="answer-{{ $answer['id'] }}-{{ $question->id }}" {{ $answer['id'] == $question->preSelectedAnswer ? 'checked' : '' }}>
+                                                                            <input type="radio" class="form-check-input" name="question[{{ $question->id }}]" value="{{ $answer['text'] }}" id="answer-{{ $answer['id'] }}-{{ $question->id }}" {{ $answer['text'] == $question->preSelectedAnswer ? 'checked' : '' }}>
                                                                             <label class="form-check-label" for="answer-{{ $answer['id'] }}-{{ $question->id }}">{{ $answer['text'] }}</label>
                                                                         </div>
                                                                     @endif
@@ -60,6 +60,7 @@
 
                                         <div class="text-center mt-3">
                                             <button type="button" class="btn btn-secondary mr-3" id="cancelButton">Cancel</button>
+                                            <button type="button" class="btn btn-danger mr-3" id="deleteButton">Delete</button>
                                             <button type="button" class="btn btn-warning" id="saveExitButton">Save and Exit</button>
                                             <button type="button" class="btn btn-primary d-none" id="submitButton">Submit</button>
                                         </div>
@@ -72,6 +73,8 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -113,6 +116,24 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         window.location.href = '{{ route('module.index') }}';
+                    }
+                });
+            });
+            // SweetAlert for Delete
+            document.getElementById('deleteButton').addEventListener('click', function () {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You progress will be deleted!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, Delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var module_id = document.getElementById('module_id').value;
+                        var url = '{{ route('quiz.delete') }}' + '?module_id=' + encodeURIComponent(module_id);
+                        window.location.href = url;
                     }
                 });
             });

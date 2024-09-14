@@ -33,7 +33,9 @@
                                                 <textarea class="form-control" name="review" rows="4" placeholder="Give your review here" required>{{ $submission->review ?? '' }}</textarea>
                                             </div>
                                             <button type="submit" class="btn btn-sm btn-primary">{{ !is_null($submission->review) ? 'Update Review' : 'Add Review' }}</button>
+                                            
                                         </form>
+
                                     </div>
                                 </div>
 
