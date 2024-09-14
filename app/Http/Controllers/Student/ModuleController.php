@@ -216,9 +216,18 @@ class ModuleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function delete(Request $request)
     {
-        //
+        $studentId = auth()->user()->id;
+        if($request->query('module_id') == null || empty($request->query('module_id'))){
+            return redirect()->route('module.index')
+            ->with('message', 'Something went wrong, please try again later');
+        }
+        $module_id = $request->query('module_id');
+        Redis::where('studentID', $studentId)->where('moduleID', $module_id)->delete();
+        return redirect()->route('module.index')
+            ->with('message', 'Quiz Deleted successfully!');
+            dd(session('message'));
     }
 
     /**
