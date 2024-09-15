@@ -79,7 +79,7 @@
                                                                         <button type="submit" class="dropdown-item" disabled>Delete</button>
                                                                     </form>
                                                                 @endif
-                                                                <a class="dropdown-item" href="http://api.qrserver.com/v1/create-qr-code/?data={{ urlencode(url('module/' . $module->id)) }}&size=300x300" target="_blank">Generate QR</a>
+                                                                <a class="dropdown-item" href="http://api.qrserver.com/v1/create-qr-code/?data={{ urlencode(url('student/modules/' . $module->id . '/join')) }}/&size=300x300" target="_blank">Generate QR</a>
                                                             </div>
                                                         </div>
                                                     </td>
