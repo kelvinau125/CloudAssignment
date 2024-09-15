@@ -32,7 +32,7 @@
                                                     <h5 class="mb-1">{{ $module->title }}</h5>
                                                 </div>
                                                 <form action="{{ route('modules.join', $module->id) }}" method="GET">
-                                                    @csrf
+                                                    
                                                     <button type="submit" class="btn btn-primary">
                                                         {{ $module->hasPartialAnswers ? 'Resume' : 'Join' }}
                                                     </button>
