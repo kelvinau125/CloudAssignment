@@ -3,7 +3,7 @@
         <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
     </div>
 
-      <h4>Hi, Teacher?</h4>
+      <h4>Hi, Educator?</h4>
       <h6 class="text-gray-700">Signing up is easy. It only takes a few steps</h6>
 
     <form method="POST" action="{{ route('register') }}" class="mt-3">

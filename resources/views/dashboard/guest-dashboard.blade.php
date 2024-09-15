@@ -38,8 +38,8 @@
                     <a href="{{ route('login') }}" class="col-md-6 mb-4 stretch-card transparent">
                         <div class="card card-light-danger">
                             <div class="card-body">
-                                <p class="mb-4">Are you a teacher?</p>
-                                <p class="fs-30 mb-2">Teacher Login</p>
+                                <p class="mb-4">Are you a educator?</p>
+                                <p class="fs-30 mb-2">Educator Login</p>
                                 <p>or sign up</p>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
         <li class="nav-item">
             <a class="nav-link w-full {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                 <i class="icon-head menu-icon"></i>
-                <span class="menu-title">Teacher Dashboard</span>
+                <span class="menu-title">Educator Dashboard</span>
             </a>
         </li>
 
