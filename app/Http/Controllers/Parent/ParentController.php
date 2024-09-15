@@ -123,7 +123,10 @@ class ParentController extends Controller
         $students = User::where('parent_user', $parentId)->pluck('id');
 
         // Fetch all submissions by the parent's students
-        $results = Submission::whereIn('studentID', $students)->get();
+        $results = Submission::whereIn('studentID', $students)
+            ->join('users', 'submission.studentID', '=', 'users.id')
+            ->select('submission.*', 'users.name as student_name')
+            ->get();
 
         // Return the view with the filtered results
         return view('parent.student-results', compact('results'));
@@ -148,8 +151,13 @@ class ParentController extends Controller
         // Fetch all submissions by the parent's students for the given module
         $results = Submission::where('moduleID', $module_id)
             ->whereIn('studentID', $students)
+            ->join('users','submission.studentID','=','users.id')
+            ->select('submission.*','users.name as student_name')
             ->get();
-
+        // $results = Submission::whereIn('studentID', $students)
+        //     ->join('users', 'submission.studentID', '=', 'users.id')
+        //     ->select('submission.*', 'users.name as student_name')
+        //     ->get();
         // Pass the results to the view
         return view('parent.module-results', compact('results'));
     }

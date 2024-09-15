@@ -16,8 +16,11 @@
                                     <tr>
                                         <th>Module ID</th>
                                         <th>Student ID</th>
+                                        <th>Student Name</th>
                                         <th>Score</th>
                                         <th>Max Score</th>
+                                        <th>Review</th>
+                                        <th>Feedback</th>
                                         <th>Submission Date</th>
                                         <th>Status</th>
                                     </tr>
@@ -27,8 +30,11 @@
                                         <tr>
                                             <td>{{ $result->moduleID }}</td>
                                             <td> {{$result->studentID}}</td>
+                                            <td> {{$result->student_name}}</td>                                            
                                             <td>{{ $result->score }}</td>
                                             <td>{{ $result->maxscore }}</td>
+                                            <td>{{ $result->review }}</td>
+                                            <td>{{ $result->feedback }}</td>
                                             <td>{{ $result->sub_date }}</td>
                                             <td>{{ $result->status }}</td>
                                         </tr>
