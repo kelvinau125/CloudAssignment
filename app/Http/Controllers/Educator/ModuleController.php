@@ -16,11 +16,15 @@ class ModuleController extends Controller
     {
         // Retrieve all modules with their associated questions
         $modules = Module::withCount('questions')->get(); // Assuming you have a relationship for questions count
-        $disabledModuleIds = DB::table('submission')->pluck('moduleID')->toArray();
+        $disabledModuleIdsSubmission = DB::table('submission')->pluck('moduleID')->toArray();
+
+        $disabledModuleIdsRedis = DB::table('redis')->pluck('moduleID')->toArray();
+
+        $combinedModuleIds = array_unique(array_merge($disabledModuleIdsSubmission, $disabledModuleIdsRedis));
     
         return view('educator.module', [
             'modules' => $modules,
-            'disabledModuleIds' => $disabledModuleIds,
+            'disabledModuleIds' => $combinedModuleIds,
         ]);
     }
 
