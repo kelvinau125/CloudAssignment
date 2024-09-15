@@ -66,7 +66,7 @@
                     </a>
                     <a href="{{ route('parent.login') }}" class="col-md-6 mb-4 stretch-card transparent">
                         <div class="card card-mainGreen">
-                            <div class="card-body">
+                            <div class="card-body text-white">
                                 <p class="mb-4">Are you a Parent?</p>
                                 <p class="fs-30 mb-2">Parent Login</p>
                                 <p>or sign up</p>

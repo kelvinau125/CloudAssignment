@@ -1,37 +1,30 @@
 @extends('dashboard.parent-dashboard')
 
 @section('student-list-content')
-<main class="container w-full max-w-892px m-auto pt-6 pb-12  ">
+<main class="container w-full max-w-892px m-auto pt-6 pb-12">
     <span class="flex justify-center uppercase font-bold text-3xl pb-2">Contents</span>
-    <div class="flex flex-wrap justify-center gap-2 gap-y-8 w-full ">
+    <div class="flex flex-wrap justify-center gap-2 w-full">
         @foreach ($results as $result)
-            <div class="border-2 bored-red-500 flex flex-col justify-center items-center">
-                <div class=" w-[300px]">
-                    <img class="w-full h-full rounded-lg" src="http://127.0.0.1:8000/assets/images/dashboard/people.svg"
-                        alt="contentImage">
-
+        <div class="card border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm transition duration-300 hover:shadow-lg hover:scale-105" style="width: 300px;">
+            <img class="w-full h-48 object-cover" src="{{ $result->content_path }}" alt="contentImage">
+            <div class="p-4">
+                <span class="text-xs font-bold text-red-600 uppercase">Photos</span>
+                <div class="text-lg font-bold mt-2">
+                    <span>{{ $result->title }}</span>
                 </div>
-                <div class=" w-full flex  bottom-[50px] items-center p-1 pb-2">
-                    <div class="flex flex-col pl-1 items-start z-10 w-52">
-                        <div class="text-start  font-normal text-sm  w-210-px ">
-                            <span> {{$result->title}}</span>
-                        </div>
-                        <div class="text-start  font-normal text-sm  w-210-px ">
-                            <span> {{$result->description}}</span>
-                        </div>
-
-                        <div class="text-xs  font-bold opacity-60 text-start ">
-                            <span> {{$result->created_at}}</span>
-
-                        </div>
-                    </div>
+                <div class="text-sm text-gray-600 mt-1">
+                    <span>{{ $result->description }}</span>
+                </div>
+                <div class="text-xs text-gray-400 mt-2">
+                    <span>{{ $result->created_at }}</span>
                 </div>
             </div>
+        </div>
         @endforeach
-
     </div>
 </main>
-<div class="row">
+
+<!-- <div class="row">
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -69,7 +62,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 @endsection
