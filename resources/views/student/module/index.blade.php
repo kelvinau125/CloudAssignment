@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
+    @if (Auth::user()->user_role == 'student')
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper">
             @include('.student.module.studentSideBar')

@@ -29,7 +29,8 @@
                 </div>
             </div>
         </div>
-    @else
+    @elseif (Auth::user()->user_role == 'student')
+    
          <!-- For other users -->
          <div class="container-fluid page-body-wrapper">
             @include('student.module.studentSideBar')
