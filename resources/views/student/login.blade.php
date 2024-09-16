@@ -9,6 +9,7 @@
     <h4>Hello! let's get started</h4>
     <h6 class="text-gray-700">Sign in to continue as Student.</h6>
 
+    <!-- Login for Parent` -->
     <form method="POST" action="{{ route('student.loginCheck') }}" class="mt-3">
         @csrf
 
@@ -34,7 +35,7 @@
             {{ __('Log in') }}
         </x-primary-button>
     </form>
-
+    
     <x-primary-button class="w-full items-center justify-center mt-2 text-white dark:text-white">
         <a href="{{ route('/') }}">
         Home Page
