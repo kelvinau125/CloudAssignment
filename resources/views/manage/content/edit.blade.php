@@ -7,14 +7,16 @@
                 <div class="card-body">
                     <h4 class="card-title">Edit Content</h4>
 
-                    <form action="{{ route('content.update', $content->id) }}" method="POST" enctype="multipart/form-data"> <!-- Include enctype for file upload -->
+                    <form action="{{ route('content.update', $content->id) }}" method="POST" enctype="multipart/form-data">
+                        <!-- Include enctype for file upload -->
                         @csrf
                         @method('PUT') <!-- Use PUT method for updating -->
 
                         <!-- Title Field -->
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" name="title" value="{{ old('title', $content->title) }}" class="form-control" id="title">
+                            <input type="text" name="title" value="{{ old('title', $content->title) }}"
+                                class="form-control" id="title">
                             @error('title')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -33,7 +35,8 @@
                         <div class="form-group">
                             <label for="content_type">Content Type</label>
                             <select name="content_type" class="form-control" id="content_type">
-                                <option value="image" {{ $content->content_type == 'image' ? 'selected' : '' }}>Image</option>
+                                <option value="image" {{ $content->content_type == 'image' ? 'selected' : '' }}>Image
+                                </option>
                                 {{-- <option value="video" {{ $content->content_type == 'video' ? 'selected' : '' }}>Video</option> --}}
                             </select>
                             @error('content_type')
@@ -45,7 +48,13 @@
                         @if ($content->content_type == 'image' && $content->content_path)
                             <div class="form-group">
                                 <label for="existing_image">Current Image</label><br>
-                                <img src="{{ asset('storage/' . $content->content_path) }}" alt="{{ $content->title }}" style="width: 100px; height: auto;">
+                                {{-- <img src="{{ asset('storage/' . $content->content_path) }}" alt="{{ $content->title }}" style="width: 100px; height: auto;"> --}}
+                                @if ($content->content_type === 'image' && $content->content_path)
+                                    <img src="{{ $content->content_path }}" alt="{{ $content->title }}"
+                                        style="width: 100px; height: auto;">
+                                @else
+                                    {{ $content->content_path }}
+                                @endif
                             </div>
                         @endif
 
