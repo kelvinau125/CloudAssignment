@@ -48,6 +48,8 @@
             </div>
         </div>
     </div>
+
+    @endif
 </x-app-layout>
 
 <!-- Include SweetAlert CDN -->
