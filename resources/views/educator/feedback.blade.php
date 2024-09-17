@@ -48,14 +48,18 @@
                                 {{-- Edit and Delete Buttons --}}
                                 <button id="editFeedbackBtn" class="btn btn-warning mt-2">Edit Feedback</button>
 
-                                <form action="{{ route('feedback.delete', $submission->id) }}" method="POST" class="mt-2 d-inline-block">
+                                <form action="{{ route('feedback.delete', $submission->id) }}" method="POST"
+                                    class="mt-2 d-inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this feedback?');">Delete Feedback</button>
+                                    <button type="submit" class="btn btn-danger mt-2"
+                                        onclick="return confirm('Are you sure you want to delete this feedback?');">Delete
+                                        Feedback</button>
                                 </form>
 
                                 {{-- Edit Feedback Form (Initially hidden) --}}
-                                <form id="editFeedbackForm" action="{{ route('feedback.update', $submission->id) }}" method="POST" class="mt-3" style="display: none;">
+                                <form id="editFeedbackForm" action="{{ route('feedback.update', $submission->id) }}"
+                                    method="POST" class="mt-3" style="display: none;">
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group">
@@ -63,9 +67,9 @@
                                         <textarea name="feedback" id="feedback" rows="5" class="form-control" required>{{ old('feedback', $submission->feedback) }}</textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary mt-2">Update Feedback</button>
-                                    <button type="button" id="cancelEditBtn" class="btn btn-secondary mt-2">Cancel</button>
+                                    <button type="button" id="cancelEditBtn"
+                                        class="btn btn-secondary mt-2">Cancel</button>
                                 </form>
-
                             @else
                                 {{-- If no feedback, show the feedback submission form --}}
                                 <form action="{{ route('feedback.submit', $submission->id) }}" method="POST">
@@ -91,19 +95,20 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle Edit Feedback Form
+            document.getElementById('editFeedbackBtn').addEventListener('click', function() {
+                document.getElementById('editFeedbackForm').style.display = 'block'; // Show the edit form
+                this.style.display = 'none'; // Hide the edit button
+            });
+
+            // Cancel Edit Feedback
+            document.getElementById('cancelEditBtn').addEventListener('click', function() {
+                document.getElementById('editFeedbackForm').style.display = 'none'; // Hide the edit form
+                document.getElementById('editFeedbackBtn').style.display =
+                'inline-block'; // Show the edit button
+            });
+        });
+    </script>
 </x-app-layout>
-
-<script>
-    // Toggle Edit Feedback Form
-    document.getElementById('editFeedbackBtn').addEventListener('click', function() {
-        document.getElementById('editFeedbackForm').style.display = 'block'; // Show the edit form
-        this.style.display = 'none'; // Hide the edit button
-    });
-
-    // Cancel Edit Feedback
-    document.getElementById('cancelEditBtn').addEventListener('click', function() {
-        document.getElementById('editFeedbackForm').style.display = 'none'; // Hide the edit form
-        document.getElementById('editFeedbackBtn').style.display = 'inline-block'; // Show the edit button
-    });
-</script>
-
