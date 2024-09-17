@@ -1,5 +1,12 @@
 <x-app-layout>
     <div class="main-panel" style="width: 100%;">
+        @if (session('apiMessage'))
+        <div class="alert alert-info">
+            {{ session('apiMessage') }}
+        </div>
+        @endif
+
+
         <div class="content-wrapper">
             <div class="row">
                 <div class="col-md-12 grid-margin">

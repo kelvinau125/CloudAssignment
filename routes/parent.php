@@ -42,6 +42,10 @@ Route::group(['prefix' => 'parent'], function () {
 
     Route::get('/parent/reporting', [ParentController::class, 'generateReport'])->name('student.reporting');
 
+    //Trigger Notification After Register An Student
+    Route::get('/trigger-api', [ParentController::class, 'triggerApi']);
+
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('parent.dashboard');

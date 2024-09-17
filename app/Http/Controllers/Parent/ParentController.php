@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
+
 
 class ParentController extends Controller
 {
@@ -184,7 +186,36 @@ class ParentController extends Controller
 
         event(new Registered($student));
 
-        return redirect(to: route('dashboard', absolute: false));
+        // Initialize the API response message
+        $apiMessage = '';
+
+        // Trigger the external API after successful registration
+        try {
+            // Make the GET request to the API
+            $apiUrl = 'https://6jb13vn1y6.execute-api.us-east-1.amazonaws.com/DevelopStage/TestAPI';
+            $response = Http::get($apiUrl);
+
+            // Log or check the API response
+            if ($response->successful()) {
+                // Optionally handle the success response
+                $apiMessage = $response->json()['body'] ?? 'API triggered successfully!';
+                \Log::info('API triggered successfully.', ['response' => $response->json()]);
+            } else {
+                $apiMessage = 'Failed to trigger API.';
+                // Optionally handle the error
+                \Log::error('Failed to trigger API.', ['status' => $response->status()]);
+            }
+        } catch (\Exception $e) {
+            $apiMessage = 'Exception occurred while triggering the API: ' . $e->getMessage();
+            // Handle any exceptions during the API request
+            \Log::error('Exception occurred while triggering the API.', ['error' => $e->getMessage()]);
+        }
+
+        // return redirect(to: route('dashboard', absolute: false));
+
+        // Redirect to the dashboard and pass the API message to the view
+        return redirect()->route('dashboard')->with('apiMessage', $apiMessage);
+
 
 
     }
@@ -217,6 +248,32 @@ class ParentController extends Controller
         // Return the report view with the calculated data
         return view('parent.report', compact('totalSubmissions', 'averageScoresPerModule', 'completionRatePerModule'));
     }
+
+    //Triger Noti API
+    public function triggerApi()
+    {
+        // API URL
+        $url = 'https://6jb13vn1y6.execute-api.us-east-1.amazonaws.com/DevelopStage/TestAPI';
+
+        // Make the GET request to the API
+        $response = Http::get($url);
+
+        // Check for success response
+        if ($response->successful()) {
+            $data = $response->json();
+            return response()->json([
+                'status' => 'Success',
+                'message' => $data['body'] ?? 'API triggered successfully!',
+            ]);
+        } else {
+            // Handle the error
+            return response()->json([
+                'status' => 'Error',
+                'message' => 'Failed to trigger API',
+            ], $response->status());
+        }
+    }
+
 
 
     /**
