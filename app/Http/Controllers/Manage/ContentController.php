@@ -38,30 +38,30 @@ class ContentController extends Controller
      * Store a newly created content in storage.
      */
     public function store(Request $request)
-{
-    $validated = $request->validate([
-        'title' => 'required|max:255',
-        'description' => 'required',
-        'content_type' => 'required',
-        'content_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', 
-    ]);
+    {
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'content_type' => 'required',
+            'content_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    if ($request->hasFile('content_image')) {
-        $file = $request->file('content_image');
-        
-        $fileName = time() . '_' . $file->getClientOriginalName();
+        if ($request->hasFile('content_image')) {
+            $file = $request->file('content_image');
 
-        $path = Storage::disk('s3')->putFileAs('images', $file, $fileName, 'public');
+            $fileName = time() . '_' . $file->getClientOriginalName();
 
-        $url = Storage::disk('s3')->url($path);
+            $path = Storage::disk('s3')->putFileAs('images', $file, $fileName, 'public');
 
-        $validated['content_path'] = $url;
+            $url = Storage::disk('s3')->url($path);
+
+            $validated['content_path'] = $url;
+        }
+
+        Content::create($validated);
+
+        return redirect()->route('content.list')->with('success', 'Content created successfully!');
     }
-
-    Content::create($validated);
-
-    return redirect()->route('content.list')->with('success', 'Content created successfully!');
-}
 
     /**
      * Show the form for editing the specified content.
@@ -77,36 +77,36 @@ class ContentController extends Controller
      * Update the specified content in storage.
      */
     public function update(Request $request, $id)
-{
-    // Find the content by its ID
-    $content = Content::findOrFail($id);
+    {
+        // Find the content by its ID
+        $content = Content::findOrFail($id);
 
-    // Validate the incoming request
-    $validated = $request->validate([
-        'title' => 'required|max:255',
-        'description' => 'required',
-        'content_type' => 'required',
-        'content_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
-    ]);
+        // Validate the incoming request
+        $validated = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'content_type' => 'required',
+            'content_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate the image
+        ]);
 
-    if ($request->hasFile('content_image')) {
-        $file = $request->file('content_image');
-        
-        $fileName = time() . '_' . $file->getClientOriginalName();
+        if ($request->hasFile('content_image')) {
+            $file = $request->file('content_image');
 
-        $path = $file->storeAs('images', $fileName, 'public');
+            $fileName = time() . '_' . $file->getClientOriginalName();
 
-        if ($content->content_path) {
-            Storage::disk('public')->delete($content->content_path);
+            $path = $file->storeAs('images', $fileName, 'public');
+
+            if ($content->content_path) {
+                Storage::disk('public')->delete($content->content_path);
+            }
+
+            $validated['content_path'] = $path;
         }
 
-        $validated['content_path'] = $path;
+        $content->update($validated);
+
+        return redirect()->route('content.list')->with('success', 'Content updated successfully!');
     }
-
-    $content->update($validated);
-
-    return redirect()->route('content.list')->with('success', 'Content updated successfully!');
-}
 
     /**
      * Remove the specified content from storage.

@@ -8,6 +8,7 @@ use App\Http\Controllers\Educator\SubmissionController;
 use App\Http\Controllers\Educator\AddQuestionController;
 
 Route::get('/', function () {
+    logger()->info('serverless testing inside');
     return view('dashboard');
 })->name('/');
 
